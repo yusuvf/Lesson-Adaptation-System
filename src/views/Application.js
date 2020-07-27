@@ -3,7 +3,6 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from "@material-ui/core/Button";
-import OgrenciBasvuru from "./OgrenciBasvuru";
 import Container from "@material-ui/core/Container";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
@@ -14,7 +13,9 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Autocomplete from "@material-ui/lab/Autocomplete";
 
-export default function Basvuru() {
+import ApplicationLessonTable from '../components/ApplicationLessonTable'
+
+export default function Application() {
   /*Bu kısım açılır buton içindir*/
   const [open, setOpen] = React.useState(false);
   const theme = useTheme();
@@ -30,13 +31,6 @@ export default function Basvuru() {
   /*Bu kısım açılır buton içindir*/
   /*ComboBox 1 elemanları*/
   const years = [
-    { year: '2027'},
-    { year: '2026'},
-    { year: '2025'},
-    { year: '2024'},
-    { year: '2023'},
-    { year: '2022'},
-    { year: '2021'},
     { year: '2020'},
     { year: '2019'},
     { year: '2018'},
@@ -51,7 +45,12 @@ export default function Basvuru() {
     { year: '2009'},
     { year: '2008'},
     { year: '2007'},
-
+    { year: '2006'},
+    { year: '2005'},
+    { year: '2004'},
+    { year: '2003'},
+    { year: '2002'},
+    { year: '2001'},
   ];
   /*ComboBox 1 elemanları*/
   /*ComboBox 2 elemanları*/
@@ -149,7 +148,7 @@ export default function Basvuru() {
           <label>&nbsp;&nbsp;&nbsp;Lütfen aşağıdaki tabloya kendi üniversitenizde almış olduğunuz dersleri giriniz.</label>
         </Grid><br/><br/><br/>
         <Grid item xs={12}>
-          <OgrenciBasvuru/>
+          <ApplicationLessonTable/>
         </Grid><br/><br/><br/>
         <Grid item xs={12} xs={7}>
           <div align="left">

@@ -1,13 +1,11 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import MaterialTable from 'material-table';
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
-function OgrenciBasvuru() {
+function ApplicationLessonTable() {
     const [state, setState] = React.useState({
         columns: [
             { title: 'Ders Kodu', field: 'derskodu' },
@@ -75,4 +73,4 @@ function OgrenciBasvuru() {
     );
 }
 
-export default OgrenciBasvuru;
+export default ApplicationLessonTable;

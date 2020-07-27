@@ -18,7 +18,7 @@ function Copyright() {
         <Typography variant="body2" color="textSecondary" align="center">
             {'Copyright © '}
             <Link color="inherit" href="https://material-ui.com/">
-                Your Website
+                Fatih Sultan Mehmet Vakıf Üniversitesi
             </Link>{' '}
             {new Date().getFullYear()}
             {'.'}
@@ -57,7 +57,7 @@ export default function SignIn() {
                     <LockOutlinedIcon />
                 </Avatar>
                 <Typography component="h1" variant="h5">
-                    Sign in
+                    Sisteme Giriş
                 </Typography>
                 <form className={classes.form} noValidate>
                     <TextField
@@ -66,7 +66,7 @@ export default function SignIn() {
                         required
                         fullWidth
                         id="email"
-                        label="Email Address"
+                        label="E-mail"
                         name="email"
                         autoComplete="email"
                         autoFocus
@@ -77,14 +77,10 @@ export default function SignIn() {
                         required
                         fullWidth
                         name="password"
-                        label="Password"
+                        label="Şifre"
                         type="password"
                         id="password"
                         autoComplete="current-password"
-                    />
-                    <FormControlLabel
-                        control={<Checkbox value="remember" color="primary" />}
-                        label="Remember me"
                     />
                     <Button
                         type="submit"
@@ -93,19 +89,10 @@ export default function SignIn() {
                         color="primary"
                         className={classes.submit}
                     >
-                        Sign In
+                        Giriş Yap
                     </Button>
                     <Grid container>
-                        <Grid item xs>
-                            <Link href="#" variant="body2">
-                                Forgot password?
-                            </Link>
-                        </Grid>
-                        <Grid item>
-                            <Link href="#" variant="body2">
-                                {"Don't have an account? Sign Up"}
-                            </Link>
-                        </Grid>
+
                     </Grid>
                 </form>
             </div>

@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
@@ -7,7 +6,11 @@ import Button from "@material-ui/core/Button";
 import LocalLibraryIcon from '@material-ui/icons/LocalLibrary';
 import PersonPinIcon from '@material-ui/icons/PersonPin';
 
-function Anasayfa() {
+import {
+    Link as RouterLink
+} from "react-router-dom";
+
+function Homepage() {
     return (
         <Container maxWidth="md" style={{marginTop:"5%"}}><br/><br/>
             <Typography variant="h4" gutterBottom>
@@ -24,15 +27,19 @@ function Anasayfa() {
                 </Grid>
                 <Grid item xs={5} style={{borderRight: "3px solid black"}}>
                     <LocalLibraryIcon style={{fontSize:"500%"}}/><br/><br/>
-                    <Button variant="contained" color="primary" size="large">
-                        Öğrenci Giriş
-                    </Button>
+                    <RouterLink to="/application">
+                        <Button variant="contained" color="primary" size="large">
+                            Öğrenci İntibak Başvurusu
+                        </Button>
+                    </RouterLink>
                 </Grid>
                 <Grid item xs={5}>
                     <PersonPinIcon style={{fontSize:"500%"}}/><br/><br/>
-                    <Button variant="contained" color="primary" size="large">
-                        Akademisyen Giriş
-                    </Button>
+                    <RouterLink to="/signin">
+                        <Button variant="contained" color="primary" size="large">
+                            Akademisyen Giriş
+                        </Button>
+                    </RouterLink>
                 </Grid>
                 <Grid item xs={1}>
                 </Grid>
@@ -42,4 +49,4 @@ function Anasayfa() {
 );
 }
 
-export default Anasayfa;
+export default Homepage;
