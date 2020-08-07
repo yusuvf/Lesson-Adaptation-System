@@ -5,6 +5,7 @@ import SignIn from './views/SignIn'
 import Dashboard from './views/Dashboard'
 import Homepage from "./views/Homepage";
 import Application from "./views/Application";
+import axios from 'axios'
 import {
     BrowserRouter as Router,
     Switch,
@@ -14,6 +15,7 @@ import {
 
 
 function App() {
+
   return (
     <div className="App">
         <Router>

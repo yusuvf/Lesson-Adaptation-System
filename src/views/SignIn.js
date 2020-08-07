@@ -13,6 +13,9 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
+import axios from 'axios'
+import { useHistory } from "react-router-dom";
+
 function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
@@ -47,7 +50,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignIn() {
+    const [state, setState] = React.useState({
+
+        data: [
+            { mail: 'beyza', sifre: 123 },
+
+        ],
+    });
     const classes = useStyles();
+    const history = useHistory();
+
 
     return (
         <Container component="main" maxWidth="xs">
@@ -88,6 +100,21 @@ export default function SignIn() {
                         variant="contained"
                         color="primary"
                         className={classes.submit}
+                        onClick={
+                            () => {
+                                const { mail, sifre } = state.data[0]
+                                axios.post('http://localhost:3004/giris', { mail, sifre })
+                                    .then(response => {
+                                        console.log(response);
+                                        if (response.data = 'success') {
+                                            history.push('/dashboard')
+                                        }
+                                    }).catch(err => console.log(err))
+                                //, (err) =>{
+                                //         console.log(err);
+                                //     });
+                            }
+                        }
                     >
                         Giriş Yap
                     </Button>

@@ -7,7 +7,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogActions from "@material-ui/core/DialogActions";
-import {makeStyles, useTheme} from "@material-ui/core/styles";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import AppBar from "@material-ui/core/AppBar";
@@ -26,7 +26,7 @@ import Container from "@material-ui/core/Container";
 import Paper from "@material-ui/core/Paper";
 import MyTable from "../components/myTable";
 import Box from "@material-ui/core/Box";
-import {Link as RouterLink} from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import DashboardIcon from "@material-ui/icons/Dashboard";
@@ -36,6 +36,7 @@ import MenuBookIcon from "@material-ui/icons/MenuBook";
 import BarChartIcon from "@material-ui/icons/BarChart";
 import Link from "@material-ui/core/Link";
 import Copyright from '../components/Copyright'
+import axios from 'axios'
 
 
 const drawerWidth = 270;
@@ -120,6 +121,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function LessonEditPage() {
+    
+    axios.get('http://localhost:3004/dersler').then(response => {
+        console.log(response.data);
+    }).catch(err => console.log(err));
+
     const mainListItems = (
         <div>
             <RouterLink to="/dashboard">
@@ -164,16 +170,19 @@ function LessonEditPage() {
             { title: 'Kredi', field: 'kredi' },
             { title: 'Teori', field: 'teori' },
             { title: 'Lab', field: 'lab' },
+            { title: 'Kontenjan', field: 'kontenjan' },
+            { title: 'Online', field: 'online' },
 
         ],
         data: [
-            { dersadi: 'Calculus I', derskodu: 'MAT227', kredi:"5", teori: '4', lab: '2'},
-            { dersadi: 'Calculus II', derskodu: 'MAT228', kredi:"5", teori: '4', lab: '2'},
-            { dersadi: 'Lineer Cebir', derskodu: 'MAT220', kredi:"4", teori: '4', lab: '0'},
-            { dersadi: 'Fizik I', derskodu: 'FZ102', kredi:"5", teori: '4', lab: '2'},
+            { dersadi: 'Calculus I', derskodu: 'MAT227', kredi: "5", teori: '4', lab: '2' ,kontenjan:'20',online:'evet'},
+            { dersadi: 'Calculus II', derskodu: 'MAT228', kredi: "5", teori: '4', lab: '2' ,kontenjan:'20',online:'evet'},
+            { dersadi: 'Lineer Cebir', derskodu: 'MAT220', kredi: "4", teori: '4', lab: '0' ,kontenjan:'30',online:'evet'},
+            { dersadi: 'Fizik I', derskodu: 'FZ102', kredi: "5", teori: '4', lab: '2' ,kontenjan:'25',online:'evet'},
 
         ],
     });
+
     /*Bu kısım açılır buton olan kaydet içindir*/
     const [open, setOpen] = React.useState(true);
 
@@ -226,7 +235,7 @@ function LessonEditPage() {
     return (
         <div className={classes.root}>
             <CssBaseline />
-            <AppBar position="absolute" style={{backgroundColor: "#b71540"}} className={clsx(classes.appBar, open && classes.appBarShift)}>
+            <AppBar position="absolute" style={{ backgroundColor: "#b71540" }} className={clsx(classes.appBar, open && classes.appBarShift)}>
                 <Toolbar className={classes.toolbar}>
                     <IconButton
                         edge="start"
