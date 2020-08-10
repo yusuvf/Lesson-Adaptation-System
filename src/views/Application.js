@@ -18,6 +18,50 @@ import ApplicationLessonTable from '../components/ApplicationLessonTable'
 export default function Application() {
   /*Bu kısım açılır buton içindir*/
   const [open, setOpen] = React.useState(false);
+
+  const [FirstName, setFirstName] = React.useState("");
+  const [LastName, setLastName] = React.useState("");
+  const [Mail, setMail] = React.useState("");
+  const [University, setUniversity] = React.useState("");
+  const [Faculty, setFaculty] = React.useState("");
+  const [Year, setYear] = React.useState("");
+  const [Department, setDepartment] = React.useState("");
+  const [ApplicationType, setApplicationType] = React.useState("");
+
+ const person = {
+      name: FirstName,
+      lastname: LastName,
+      mail:Mail,
+      university: University,
+      faculty:Faculty,
+      year:Year,
+      department:Department,
+      applicationType:ApplicationType,
+  }
+
+
+  const [st, setSt] = React.useState({
+
+    data: [{
+      ad: 'melike',
+      soyad: 'melike',
+      fakulte: 'muhendislik fakultesi' ,
+      bolum:'bilgisayar mühendisliği',
+      mail:'m@gmail.com',
+      universite:'fsmvu',
+      girisYil:2018,
+      basvuruTur:'Yatay Geçiş',
+      dersler:{
+        kod: 'MAT207',
+        ad: 'Calculus I',
+        kredi:5,
+        akts:7,
+        basariNotu:'BA'
+      }
+    },
+    ],
+  });
+
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -57,8 +101,10 @@ export default function Application() {
   const gelisNeden = [
     { title: 'Yatay Geçiş'},
     { title: 'Dikey Geçiş'},
-    { title: 'Diğer',},
+    { title: 'Diğer'},
   ];
+
+  console.log(person)
   /*ComboBox 2 elemanları*/
   return (
     <React.Fragment>
@@ -75,6 +121,7 @@ export default function Application() {
             label="Ad"
             fullWidth
             autoComplete="given-name"
+            onChange={e => setFirstName(e.target.value)}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -85,9 +132,32 @@ export default function Application() {
             label="Soyad"
             fullWidth
             autoComplete="family-name"
+            onChange={e => setLastName(e.target.value)}
           />
         </Grid>
         <Grid item xs={12}>
+          <TextField
+              required
+              id="mail"
+              name="mail"
+              label="Mail Adresiniz"
+              fullWidth
+              autoComplete="shipping address-level2"
+              onChange={e => setMail(e.target.value)}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+              required
+              id="universite"
+              name="universite"
+              label="Kayıtlı Olduğunuz Üniversite"
+              fullWidth
+              autoComplete="shipping postal-code"
+              onChange={e => setUniversity(e.target.value)}
+          /><br/><br/>
+        </Grid>
+        <Grid item xs={12} sm={6}>
           <TextField
             required
             id="enstitu"
@@ -95,9 +165,10 @@ export default function Application() {
             label="Enstitü/Fakülte"
             fullWidth
             autoComplete="shipping address-line1"
+            onChange={e => setFaculty(e.target.value)}
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} sm={6}>
           <TextField
               required
             id="bolum"
@@ -105,48 +176,32 @@ export default function Application() {
             label="Bölüm/Program"
             fullWidth
             autoComplete="shipping address-line2"
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <TextField
-            required
-            id="mail"
-            name="mail"
-            label="Mail Adresi"
-            fullWidth
-            autoComplete="shipping address-level2"
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <TextField
-            required
-            id="universite"
-            name="universite"
-            label="Üniversite"
-            fullWidth
-            autoComplete="shipping postal-code"
-          /><br/><br/>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Autocomplete
-              id="combo-box-demo"
-              options={years}
-              getOptionLabel={(option) => option.year}
-              style={{ width: 300 }}
-              renderInput={(params) => <TextField {...params} label="Kendi Üniversitenize Giriş Yılınız" variant="outlined" />}
+              onChange={e => setDepartment(e.target.value)}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
+          <TextField
+              required
+              id="university-year"
+              label="Üniversitenize Giriş Yılınız"
+              fullWidth
+              onChange={e => setYear(e.target.value)}
+          />
+        </Grid>
+        <Grid item xs={12} sm={6} >
           <Autocomplete
-              id="combo-box-demo"
+              id="application-type-combo"
               options={gelisNeden}
               getOptionLabel={(option) => option.title}
-              style={{ width: 300 }}
+              fullWidth
               renderInput={(params) => <TextField {...params} label="Başvuru Türü" variant="outlined" />}
+              onChange={(e,val) => setApplicationType(val.title)}
           />
-        </Grid><br/><br/><br/><br/><br/><br/><br/><br/>
+        </Grid>
+        <br/><br/><br/><br/><br/><br/><br/><br/>
           <label>&nbsp;&nbsp;&nbsp;Lütfen aşağıdaki tabloya kendi üniversitenizde almış olduğunuz dersleri giriniz.</label>
-        </Grid><br/><br/><br/>
+        </Grid>
+        <br/><br/><br/>
         <Grid item xs={12}>
           <ApplicationLessonTable/>
         </Grid><br/><br/><br/>
