@@ -352,7 +352,7 @@ function LessonEditPage() {
                             </div>
                         </Grid>
                         <Grid item sm={2}>
-                            <div>
+                            <div style={{float:'left'}}>
                                 <Button variant="contained" color="primary" size="medium" onClick={handleClickOpenV}>
                                     Varsayılana Dön
                                 </Button>
@@ -382,7 +382,7 @@ function LessonEditPage() {
                         <Grid item sm={8}>
                         </Grid>
                         <Grid item sm={2}>
-                            <div>
+                            <div style={{float:'right'}}>
                                 <Button variant="contained" color="primary" size="medium" onClick={dialogOpen}>
                                     Kaydet
                                 </Button>

@@ -12,7 +12,7 @@ import MenuBookIcon from "@material-ui/icons/MenuBook";
 import BarChartIcon from "@material-ui/icons/BarChart";
 import clsx from "clsx";
 import Typography from "@material-ui/core/Typography";
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles, useTheme} from '@material-ui/core/styles';
 
 import {
     BrowserRouter as Router,
@@ -36,10 +36,17 @@ import MaterialTable from "material-table";
 import Button from "@material-ui/core/Button";
 import MyTable from "../components/myTable";
 import Copyright from '../components/Copyright'
+import Dialog from "@material-ui/core/Dialog";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogActions from "@material-ui/core/DialogActions";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 export default function AcademicianEditPage(){
 
     const drawerWidth = 270;
+
 
     const useStyles = makeStyles((theme) => ({
         root: {
@@ -156,6 +163,27 @@ export default function AcademicianEditPage(){
             </RouterLink>
         </div>
     );
+    const [saveDialogOpen, setSaveDialogOpen] = React.useState(false);
+    const [openV, setOpenV] = React.useState(false);
+    const theme = useTheme();
+    const fullScreenV = useMediaQuery(theme.breakpoints.down('sm'));
+    const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+
+    const handleClickOpenV = () => {
+        setOpenV(true);
+    };
+
+    const handleCloseV = () => {
+        setOpenV(false);
+    };
+
+    const dialogOpen = () => {
+        setSaveDialogOpen(true);
+    }
+
+    const dialogClose = () => {
+        setSaveDialogOpen(false);
+    }
 
     const classes = useStyles();
     const [open, setOpen] = React.useState(true);
@@ -273,12 +301,62 @@ export default function AcademicianEditPage(){
                             </div>
                         </Grid>
                         <Grid item sm={2}>
-                            <Button variant="contained" color="primary" size="medium">Varsayılana Dön</Button>
+                            <div style={{float:'left'}}>
+                                <Button variant="contained" color="primary" size="medium" onClick={handleClickOpenV}>
+                                    Varsayılana Dön
+                                </Button>
+                                <Dialog
+                                    fullScreen={fullScreenV}
+                                    open={openV}
+                                    onClose={handleCloseV}
+                                    aria-labelledby="responsive-dialog-title"
+                                >
+                                    <DialogTitle id="responsive-dialog-title">{"Varsayılana Dönülsün mü?"}</DialogTitle>
+                                    <DialogContent>
+                                        <DialogContentText>
+                                            Varsayılana dönmek istediğinize emin misiniz?
+                                        </DialogContentText>
+                                    </DialogContent>
+                                    <DialogActions>
+                                        <Button autoFocus variant="outlined" onClick={handleCloseV} color="primary">
+                                            İptal
+                                        </Button>
+                                        <Button variant="outlined" onClick={handleCloseV} color="primary" autoFocus>
+                                            Varsayılana Dön
+                                        </Button>
+                                    </DialogActions>
+                                </Dialog>
+                            </div>
                         </Grid>
                         <Grid item sm={8}>
                         </Grid>
                         <Grid item sm={2}>
-                            <Button variant="contained" color="primary" size="medium">Kaydet</Button>
+                            <div style={{float:'right'}}>
+                                <Button variant="contained" color="primary" size="medium" onClick={dialogOpen}>
+                                    Kaydet
+                                </Button>
+                                <Dialog
+                                    fullScreen={fullScreen}
+                                    open={saveDialogOpen}
+                                    onClose={dialogClose}
+                                    aria-labelledby="responsive-dialog-title"
+                                >
+                                    <DialogTitle id="responsive-dialog-title">{"Değişiklikler Kaydedilsin mi?"}</DialogTitle>
+                                    <DialogContent>
+                                        <DialogContentText>
+                                            Kaydetmek istediğinize emin misiniz?
+                                        </DialogContentText>
+                                    </DialogContent>
+                                    <DialogActions>
+                                        <Button autoFocus variant="outlined" onClick={dialogClose} color="primary">
+                                            İptal
+                                        </Button>
+                                        <Button variant="outlined" onClick={dialogClose} color="primary" autoFocus>
+                                            Kaydet
+                                        </Button>
+                                    </DialogActions>
+                                </Dialog>
+                            </div>
                         </Grid>
                     </Grid>
                     <Box pt={4}>
