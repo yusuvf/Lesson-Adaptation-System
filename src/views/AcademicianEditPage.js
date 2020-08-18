@@ -182,10 +182,11 @@ export default function AcademicianEditPage(){
             },
         ],
     });
+
     return (
         <div className={classes.root}>
             <CssBaseline />
-            <AppBar position="absolute" style={{backgroundColor: "#b71540"}} className={clsx(classes.appBar, open && classes.appBarShift)}>
+            <AppBar position="absolute" style={{backgroundColor: "#457b9d"}} className={clsx(classes.appBar, open && classes.appBarShift)}>
                 <Toolbar className={classes.toolbar}>
                     <IconButton
                         edge="start"

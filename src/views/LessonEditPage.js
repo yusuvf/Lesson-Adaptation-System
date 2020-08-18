@@ -157,6 +157,17 @@ function LessonEditPage() {
         </div>
     );
 
+    const obj = {
+        columns: [
+            { title: 'Ders Adı', field: 'dersadi' },
+            { title: 'Ders Kodu', field: 'derskodu' },
+            { title: 'Kredi', field: 'kredi' },
+            { title: 'Teori', field: 'teori' },
+            { title: 'Lab', field: 'lab' },
+
+        ],
+    }
+
     const [state, setState] = React.useState({
         columns: [
             { title: 'Ders Adı', field: 'dersadi' },
@@ -174,6 +185,25 @@ function LessonEditPage() {
 
         ],
     });
+
+    /*{
+        columns: [
+            { title: 'Ders Adı', field: 'dersadi' },
+            { title: 'Ders Kodu', field: 'derskodu' },
+            { title: 'Kredi', field: 'kredi' },
+            { title: 'Teori', field: 'teori' },
+            { title: 'Lab', field: 'lab' },
+
+        ],
+        data: [
+            { dersadi: 'asdasd I', derskodu: 'MAT227', kredi:"5", teori: '4', lab: '2'},
+            { dersadi: 'Calculus II', derskodu: 'MAT228', kredi:"5", teori: '4', lab: '2'},
+            { dersadi: 'Lineer Cebir', derskodu: 'MAT220', kredi:"4", teori: '4', lab: '0'},
+            { dersadi: 'Fizik I', derskodu: 'FZ102', kredi:"5", teori: '4', lab: '2'},
+
+        ],
+    }*/
+
     /*Bu kısım açılır buton olan kaydet içindir*/
     const [open, setOpen] = React.useState(true);
 
@@ -226,7 +256,7 @@ function LessonEditPage() {
     return (
         <div className={classes.root}>
             <CssBaseline />
-            <AppBar position="absolute" style={{backgroundColor: "#b71540"}} className={clsx(classes.appBar, open && classes.appBarShift)}>
+            <AppBar position="absolute" style={{backgroundColor: "#457b9d"}} className={clsx(classes.appBar, open && classes.appBarShift)}>
                 <Toolbar className={classes.toolbar}>
                     <IconButton
                         edge="start"
@@ -269,6 +299,15 @@ function LessonEditPage() {
                         <Grid item xs={12}>
                             <div className="App">
                                 <MaterialTable
+                                    style={{backgroundColor: '#f8f9fa',}}
+                                    options={{
+                                        headerStyle: {
+                                            backgroundColor: '#f8f9fa',
+                                        },
+                                        rowStyle: {
+                                            backgroundColor: '#f8f9fa',
+                                        }
+                                    }}
                                     title="Ders Listesi"
                                     columns={state.columns}
                                     data={state.data}

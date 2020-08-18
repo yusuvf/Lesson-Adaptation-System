@@ -37,6 +37,10 @@ export default function Application() {
       year:Year,
       department:Department,
       applicationType:ApplicationType,
+
+     dersler:[
+
+     ]
   }
 
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import MaterialTable from 'material-table';
 
 export default function MyTable() {
@@ -28,7 +28,6 @@ export default function MyTable() {
                 fsmvuDersinAdi: 'Bilgisayar Programlama',
                 fsmvuKredi: 3,
                 fsmvuAkts: 5,
-                fsmvuBasariNotu: 'BA'
             },
             {
                 intibakDersKodu: 'CS102',
@@ -40,11 +39,48 @@ export default function MyTable() {
                 fsmvuDersinAdi: 'Bilgisayar Programlama',
                 fsmvuKredi: 3,
                 fsmvuAkts: 5,
-                fsmvuBasariNotu: 'BA'
             }
         ],
-
     });
+
+    const [dbLessons, setDbLessons] = React.useState({
+        lessons: [
+            {
+                dersKodu: 'blm102',
+                dersIsmi: 'Veri Yapıları',
+                dersKredi: 5,
+                dersAkts: 6,
+
+            },
+            {
+                dersKodu: 'blm103',
+                dersIsmi: 'Veri Yapıları2',
+                dersKredi: 5,
+                dersAkts: 6,
+            },
+            {
+                dersKodu: 'blm104',
+                dersIsmi: 'Veri Yapıları3',
+                dersKredi: 5,
+                dersAkts: 6,
+            }
+        ]
+    });
+
+
+    useEffect(() => {
+        for (let i = 0; i<state.data.length; i++){
+            for (let k = 0; k<dbLessons.lessons.length; k++ ){
+                if(state.data[i].fsmvuDersKodu === dbLessons.lessons[k].dersKodu){
+                    state.data[i].fsmvuDersinAdi = dbLessons.lessons[k].dersIsmi;
+                    state.data[i].fsmvuAkts = dbLessons.lessons[k].dersAkts;
+                    state.data[i].fsmvuKredi = dbLessons.lessons[k].dersKredi;
+                }
+            }
+        }
+    });
+
+    console.log(state.data);
 
     return (
         <MaterialTable
