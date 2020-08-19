@@ -14,7 +14,7 @@ import List from "@material-ui/core/List";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import MyTable from "../components/myTable";
+import ApplicationReviewTable from "../components/ApplicationReviewTable";
 import Box from "@material-ui/core/Box";
 import Copyright from "../components/Copyright";
 import React from "react";

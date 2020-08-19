@@ -14,7 +14,7 @@ import List from "@material-ui/core/List";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import MyTable from "../components/myTable";
+import ApplicationReviewTable from "../components/ApplicationReviewTable";
 import Box from "@material-ui/core/Box";
 import Copyright from "../components/Copyright";
 import React from "react";
@@ -26,7 +26,14 @@ import ListItemText from "@material-ui/core/ListItemText";
 import PeopleIcon from "@material-ui/icons/People";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
 import BarChartIcon from "@material-ui/icons/BarChart";
-import {makeStyles} from "@material-ui/core/styles";
+import {makeStyles, useTheme} from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
+import Dialog from "@material-ui/core/Dialog";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogActions from "@material-ui/core/DialogActions";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const drawerWidth = 270;
 
@@ -149,6 +156,18 @@ export default function ApplicationReviewPage(){
         </div>
     );
 
+    const theme = useTheme();
+    const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+    const [saveDialogOpen, setSaveDialogOpen] = React.useState(false);
+
+    const dialogOpen = () => {
+        setSaveDialogOpen(true);
+    }
+
+    const dialogClose = () => {
+        setSaveDialogOpen(false);
+    }
+
     const classes = useStyles();
     const [open, setOpen] = React.useState(true);
     const handleDrawerOpen = () => {
@@ -181,8 +200,7 @@ export default function ApplicationReviewPage(){
                     </IconButton>
                 </Toolbar>
             </AppBar>
-            <Drawer
-                variant="permanent"
+            <Drawer variant="permanent"
                 classes={{
                     paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
                 }}
@@ -202,11 +220,39 @@ export default function ApplicationReviewPage(){
                     <Grid container spacing={0}>
                         <Grid item xs={12} lg={12} sm={12} md={12}>
                             <Paper>
-                                <MyTable />
+                                <ApplicationReviewTable />
                             </Paper>
                         </Grid>
+                        <Grid style={{marginTop:'4vh'}} xs={12} lg={12} sm={12} md={12}>
+                            <div style={{float:'right'}}>
+                                <Button variant="contained" color="primary" size="medium" onClick={dialogOpen}>
+                                    İntİbakı Tamamla
+                                </Button>
+                                <Dialog
+                                    fullScreen={fullScreen}
+                                    open={saveDialogOpen}
+                                    onClose={dialogClose}
+                                    aria-labelledby="responsive-dialog-title"
+                                >
+                                    <DialogTitle id="responsive-dialog-title">{"Değişiklikler Kaydedilsin mi?"}</DialogTitle>
+                                    <DialogContent>
+                                        <DialogContentText>
+                                            Kaydetmek istediğinize emin misiniz?
+                                        </DialogContentText>
+                                    </DialogContent>
+                                    <DialogActions>
+                                        <Button autoFocus variant="outlined" onClick={dialogClose} color="primary">
+                                            İptal
+                                        </Button>
+                                        <Button variant="outlined" onClick={dialogClose} color="primary" autoFocus>
+                                            Kaydet
+                                        </Button>
+                                    </DialogActions>
+                                </Dialog>
+                            </div>
+                        </Grid>
                     </Grid>
-                    <Box pt={4}>
+                    <Box style={{marginTop:'8vh'}} pt={4}>
                         <Copyright />
                     </Box>
                 </Container>

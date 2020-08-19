@@ -36,7 +36,7 @@ function ApplicationLessonTable() {
             <Grid item xs={12}>
                 <div className="App">
                     <MaterialTable
-                        title="Ders Listesi"
+                        title="Öğrenci Ders Listesi"
                         columns={state.columns}
                         data={state.data}
                         editable={{

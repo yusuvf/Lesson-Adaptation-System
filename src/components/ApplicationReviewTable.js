@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
 import MaterialTable from 'material-table';
 
-export default function MyTable() {
-    let universityInfo = "Sabancı Üniversitesi"
+export default function ApplicationReviewTable() {
+    const [universityInfo, setUniversityInfo] = React.useState("Sabancı Üniversitesi");
 
     const [state, setState] = React.useState({
         columns: [

@@ -34,7 +34,7 @@ import List from "@material-ui/core/List";
 import Link from '@material-ui/core/Link';
 import MaterialTable from "material-table";
 import Button from "@material-ui/core/Button";
-import MyTable from "../components/myTable";
+import ApplicationReviewTable from "../components/ApplicationReviewTable";
 import Copyright from '../components/Copyright'
 import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";

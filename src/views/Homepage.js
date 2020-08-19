@@ -13,14 +13,14 @@ import {
 function Homepage() {
     return (
         <Container maxWidth="md" style={{marginTop:"5%"}}><br/><br/>
-            <Typography variant="h4" gutterBottom>
+            <Typography style={{fontFamily:'Roboto',fontWeight:'800'}} variant="h4" gutterBottom>
                 Fatih Sultan Mehmet Vakıf Üniversitesi
             </Typography>
-            <Typography variant="h4" gutterBottom>
-                Ders Yükü ve İntibak Sayfası
+            <Typography style={{fontFamily:'Roboto',fontWeight:'800'}} variant="h4" gutterBottom>
+                İntibak Başvuru Sistemi
             </Typography>
-            <Grid item xs={12}>
-                <p>İntibak başvurusu yapmak için Öğrenci Giriş seçeneğini seçmeniz gerekmektedir.</p>
+            <Grid style={{marginTop:'10vh',fontFamily:'Roboto',fontWeight:'500'}} item xs={12}>
+                <p>İntibak Başvurusu yapmak isteyen öğrenciler ve bu başvuruları onaylayıp düzenlemek isteyen akademsiyenler için geliştirilmiş otomasyon sistemine hoşgeldiniz.</p>
             </Grid>
             <Grid container spacing={3} style={{marginTop:"12%"}}>
                 <Grid item xs={1}>
