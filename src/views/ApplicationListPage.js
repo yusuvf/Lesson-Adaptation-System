@@ -202,9 +202,7 @@ export default function ApplicationListPage(){
                 <Container maxWidth="xl" className={classes.container}>
                     <Grid container spacing={0}>
                         <Grid item xs={12} lg={12} sm={12} md={12}>
-                            <Paper>
-                                <ApplicationSelectionList />
-                            </Paper>
+                            <ApplicationSelectionList />
                         </Grid>
                     </Grid>
                     <Box pt={4}>

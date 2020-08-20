@@ -28,38 +28,20 @@ import MenuBookIcon from "@material-ui/icons/MenuBook";
 import BarChartIcon from "@material-ui/icons/BarChart";
 import {PartyMode} from "@material-ui/icons";
 
+/*
+const yeniDizi=[
 
-//This array is main array.
-const items = [];
-
-//Subject datas that comes from database.
-const subjects = [
-    { name: 'Veri Yapıları'},
-    { name: 'Bilgisayar Programlama I'},
-    { name: 'Veri Bilimi',},
-    { name: 'Veri Yapıları1'},
-    { name: 'Bilgisayar Programlama I1'},
-    { name: 'Veri Bilimi1'},
-    { name: 'Veri Yapıları2'},
-    { name: 'Bilgisayar Programlama I2'},
-    { name: 'Veri Bilimi2'},
 ]
-//This loop converts data which comes from database to our format.
-for (let x = 0; x<= subjects.length-1; x++){
-    items[x] = {name:subjects[x].name,box:0, selected:false};
+
+for (let i=0 ;i<dbDizi.length; i++){
+    yeniDizi.push(
+        {
+            name: dbDizi[i].dersAd
+        }
+    )
 }
-//Teacher datas that comes from database
-const teachers = [
-    { title: 'Musa Aydın'},
-    { title: 'Berna Kiraz'},
-    { title: 'Ali Nizam',},
-];
-//Term datas.
-const term = [
-    { term: 'Güz'},
-    { term: 'Bahar'},
-    { term: 'Yaz',},
-];
+
+ */
 
 const drawerWidth = 270;
 
@@ -142,14 +124,40 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-
-//Subject datas which belongs to selected teacher.
-
-function generateItems() {
-    return items;
-}
-
 export default function LessonPoolPage() {
+
+    //This array is main array.
+    const ListeElemanlari = [];
+
+    //Teacher datas that comes from database
+    const [teachers,setTeachers]= React.useState([
+        { title: 'Musa Aydın'},
+        { title: 'Berna Kiraz'},
+        { title: 'Ali Nizam',},
+    ]);
+    //Term datas.
+    const [term, setTerm] = React.useState([
+        { term: 'Güz'},
+        { term: 'Bahar'},
+        { term: 'Yaz',},
+    ]);
+
+    //Subject datas that comes from database.
+    const [subjects,setSubjects] = React.useState([
+        { name: 'Veri Yapıları'},
+        { name: 'Bilgisayar Programlama I'},
+        { name: 'Veri Bilimi',},
+        { name: 'Veri Yapıları1'},
+        { name: 'Bilgisayar Programlama I1'},
+        { name: 'Veri Bilimi1'},
+        { name: 'Veri Yapıları2'},
+        { name: 'Bilgisayar Programlama I2'},
+        { name: 'Veri Bilimi2'},
+    ]);
+    //This loop converts data which comes from database to our format.
+    for (let x = 0; x<subjects.length; x++){
+        ListeElemanlari[x] = {name:subjects[x].name,box:0, selected:false};
+    }
 
     const classes = useStyles();
 
@@ -198,11 +206,11 @@ export default function LessonPoolPage() {
         </div>
     );
 
-    const [items,setItems] =useState(generateItems());
+    const [items,setItems] =useState(ListeElemanlari);
 
     function generateMarkUp(iitems) {
         return(
-            <Paper style={{height:'100%'}}>
+            <Paper style={{height:'60vh', overflow: 'auto'}}>
                 <List>
                     {iitems.map(item => <ListItem><Checkbox onChange={() => handleCheckboxChange(item)} checked={item.selected}/><span>{item.name}</span></ListItem>)}
                 </List>
@@ -250,17 +258,19 @@ export default function LessonPoolPage() {
 
     }
 
-    let hocadanGelen = [];
+    const [hocaDersi,setHocaDersi] = [
+        { name: 'Bilgisayar Programlama I',},
+        { name: 'Veri Bilimi'},
+        { name: 'Veri Yapıları1'},
+        { name: 'Bilgisayar Programlama I1'},
+    ];
+
     function giveValueFromTeacher(value) {
         setValue(value);
         //Bu hocadangelen2 değeri veritabanından gelen hocaya göre değişen derslerdir. hoca adına value.title ile erişebilirsiniz.
-        const hocadanGelen2 = [
-            { name: 'Bilgisayar Programlama I',},
-            { name: 'Veri Bilimi'},
-            { name: 'Veri Yapıları1'},
-            { name: 'Bilgisayar Programlama I1'},
-        ];
-        hocadanGelen = hocadanGelen2
+
+        //setHocaDersi(Databaseden gelecek veri burada çalışmalı)
+
         //Before doing seperate firstly do all boxes 0 to adjust all lists.
         for (let b =0; b<=items.length-1; b++){
             items[b].box = 0;
@@ -268,9 +278,9 @@ export default function LessonPoolPage() {
         }
 
         //This algorithm works to seperate classes as right and left.
-        for (let a =0; a<=hocadanGelen.length-1; a++){
+        for (let a =0; a<=hocaDersi.length-1; a++){
             for (let b =0; b<=items.length-1; b++){
-                if(hocadanGelen[a].name == items[b].name){
+                if(hocaDersi[a].name == items[b].name){
                     items[b].box = 1;
                     items[b].selected = true;
                 }
@@ -288,7 +298,6 @@ export default function LessonPoolPage() {
     function searchArea(e) {
         var s = e.target.value;
         setSearchable(s);
-        return;
     }
     return(
     <div className={classes.root}>
