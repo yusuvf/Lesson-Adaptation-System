@@ -51,6 +51,7 @@ export default function AcademicianEditPage(){
     const useStyles = makeStyles((theme) => ({
         root: {
             display: 'flex',
+            backgroundColor:'#f3efec'
         },
         toolbar: {
             paddingRight: 24, // keep right padding when drawer closed

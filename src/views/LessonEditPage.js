@@ -42,6 +42,7 @@ const drawerWidth = 270;
 
 const useStyles = makeStyles((theme) => ({
     root: {
+        backgroundColor:'#f3efec',
         display: 'flex',
     },
     toolbar: {
@@ -299,13 +300,12 @@ function LessonEditPage() {
                         <Grid item xs={12}>
                             <div className="App">
                                 <MaterialTable
-                                    style={{backgroundColor: '#f8f9fa',}}
                                     options={{
                                         headerStyle: {
-                                            backgroundColor: '#f8f9fa',
+
                                         },
                                         rowStyle: {
-                                            backgroundColor: '#f8f9fa',
+
                                         }
                                     }}
                                     title="Ders Listesi"

@@ -34,6 +34,7 @@ const drawerWidth = 270;
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
+        backgroundColor:'#f3efec'
     },
     toolbar: {
         paddingRight: 24, // keep right padding when drawer closed
@@ -199,7 +200,7 @@ export default function ApplicationListPage(){
             </Drawer>
             <main className={classes.content}>
                 <div className={classes.appBarSpacer} />
-                <Container maxWidth="xl" className={classes.container}>
+                <Container maxWidth="lg" className={classes.container}>
                     <Grid container spacing={0}>
                         <Grid item xs={12} lg={12} sm={12} md={12}>
                             <ApplicationSelectionList />

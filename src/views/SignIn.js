@@ -12,6 +12,9 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Copyright from "../components/Copyright";
+import {useHistory} from "react-router";
+
+
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -35,12 +38,14 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn() {
 
+    const history = useHistory();
+
     const classes = useStyles();
 
     const [id,setId] = useState("");
 
     return (
-        <Container component="main" maxWidth="xs">
+        <Container style={{marginTop:'15vh'}} component="main" maxWidth="xs">
             <CssBaseline />
             <div className={classes.paper}>
                 <Avatar className={classes.avatar}>
@@ -79,6 +84,7 @@ export default function SignIn() {
                         variant="contained"
                         color="primary"
                         className={classes.submit}
+                        onClick={ () => {history.push('/dashboard',true)} }
                     >
                         Giriş Yap
                     </Button>

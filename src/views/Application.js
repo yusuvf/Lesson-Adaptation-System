@@ -65,8 +65,8 @@ export default function Application() {
   return (
     <React.Fragment>
       <Container maxWidth="md" style={{marginTop:"5%", marginBottom:"5vh"}}>
-         <Grid style={{marginTop:'5vh'}} container spacing={3}>
-            <Grid item xs={12} sm={12}>
+         <Grid style={{marginTop:'10vh'}} container spacing={3}>
+            <Grid item xs={12} sm={12} style={{marginBottom:'4vh'}}>
               <Typography style={{fontWeight:'800'}} variant="h4" gutterBottom>
                   Öğrenci İntibak Başvuru Ekranı
               </Typography><br/>
@@ -146,7 +146,9 @@ export default function Application() {
                 onChange={e => setYear(e.target.value)}
                 />
             </Grid>
-            <Grid item xs={12} sm={6} >
+             <Grid item xs={12} sm={4} >
+             </Grid>
+            <Grid item xs={12} sm={4} style={{marginTop:'2vh'}} >
                 <Autocomplete
                     id="application-type-combo"
                     options={gelisNeden}
@@ -156,6 +158,8 @@ export default function Application() {
                     onChange={(e,val) => setApplicationType(val.title)}
                 />
             </Grid>
+             <Grid item xs={12} sm={4} >
+             </Grid>
             <Grid style={{marginTop:'8vh', fontWeight:'500', fontFamily:'Roboto'}} item xs={12}>
               <p>Lütfen aşağıdaki tabloya kendi üniversitenizde almış olduğunuz dersleri giriniz. Sağ üstteki + butonuna basarak ders ekleyebilirsiniz. Buna ek olarak Transkriptinizi de eklemeyi lütfen unutmayın.</p>
             </Grid>

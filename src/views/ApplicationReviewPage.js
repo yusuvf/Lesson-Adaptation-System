@@ -18,7 +18,8 @@ import ApplicationReviewTable from "../components/ApplicationReviewTable";
 import Box from "@material-ui/core/Box";
 import Copyright from "../components/Copyright";
 import React from "react";
-import {Link as RouterLink} from "react-router-dom";
+import {useHistory,
+        Link as RouterLink} from "react-router-dom";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import DashboardIcon from "@material-ui/icons/Dashboard";
@@ -40,6 +41,7 @@ const drawerWidth = 270;
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
+        backgroundColor:'#f3efec'
     },
     toolbar: {
         paddingRight: 24, // keep right padding when drawer closed
@@ -159,6 +161,7 @@ export default function ApplicationReviewPage(){
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
     const [saveDialogOpen, setSaveDialogOpen] = React.useState(false);
+    const history = useHistory();
 
     const dialogOpen = () => {
         setSaveDialogOpen(true);
@@ -176,6 +179,8 @@ export default function ApplicationReviewPage(){
     const handleDrawerClose = () => {
         setOpen(false);
     };
+
+    console.log(history.location.state.applicationId)
     return(
         <div className={classes.root}>
             <CssBaseline />

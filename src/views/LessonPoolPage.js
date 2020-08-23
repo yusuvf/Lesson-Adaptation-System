@@ -154,6 +154,16 @@ export default function LessonPoolPage() {
         { name: 'Bilgisayar Programlama I2'},
         { name: 'Veri Bilimi2'},
     ]);
+
+    React.useEffect(() => {
+        console.log(subjects)
+        setSubjects([
+            { name: 'Veri Yapıları'},
+        ])
+        console.log(subjects)
+    },[]);
+
+
     //This loop converts data which comes from database to our format.
     for (let x = 0; x<subjects.length; x++){
         ListeElemanlari[x] = {name:subjects[x].name,box:0, selected:false};
@@ -172,11 +182,11 @@ export default function LessonPoolPage() {
     const mainListItems = (
         <div>
             <RouterLink to="/dashboard">
-                <ListItem button >
+                <ListItem  button >
                     <ListItemIcon>
                         <DashboardIcon />
                     </ListItemIcon>
-                    <ListItemText primary="İntibak Başvuruları" />
+                    <ListItemText style={{textDecoration:'none' }} primary="İntibak Başvuruları" />
                 </ListItem>
             </RouterLink>
             <RouterLink to="/dashboard/akademisyenduzenle">
@@ -210,7 +220,7 @@ export default function LessonPoolPage() {
 
     function generateMarkUp(iitems) {
         return(
-            <Paper style={{height:'60vh', overflow: 'auto'}}>
+            <Paper style={{height:'50vh', overflow: 'auto'}}>
                 <List>
                     {iitems.map(item => <ListItem><Checkbox onChange={() => handleCheckboxChange(item)} checked={item.selected}/><span>{item.name}</span></ListItem>)}
                 </List>
@@ -341,7 +351,7 @@ export default function LessonPoolPage() {
         <main className={classes.content}>
             <div className={classes.appBarSpacer} />
             <Container style={{padding:'2vw'}} maxWidth="lg" className={classes.container}>
-                <Paper variant="outlined" style={{backgroundColor:'#e5e5e5'}}>
+                <Paper variant="outlined" style={{backgroundColor:'#f3efec'}}>
                     <Grid container style={{padding:'2vw'}}>
                         <Grid item xs={12} style={{height:'8vh',textAlign:'left' , fontSize:'22px', fontWeight:'900'}}>
                            Ders Havuzu Düzenleme

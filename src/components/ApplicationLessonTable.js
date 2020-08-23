@@ -1,10 +1,6 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import MaterialTable from 'material-table';
-import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import Container from "@material-ui/core/Container";
 
 function ApplicationLessonTable() {
     const [state, setState] = React.useState({
@@ -12,7 +8,7 @@ function ApplicationLessonTable() {
             { title: 'Ders Kodu', field: 'derskodu' },
             { title: 'Ders Adı', field: 'dersadi' },
             { title: 'Kredi', field: 'kredi' },
-            { title: 'Akts', field: 'akts' },
+            { title: 'AKTS', field: 'akts' },
             { title: 'Başarı Notu', field: 'basarinotu' },
         ],
         data: [
@@ -39,6 +35,17 @@ function ApplicationLessonTable() {
                         title="Öğrenci Ders Listesi"
                         columns={state.columns}
                         data={state.data}
+                        options={{
+                            headerStyle: {
+                                backgroundColor: '#01579b',
+                                color: '#FFF',
+                                textAlign:'left'
+                            },
+                            cellStyle: {
+                                textAlign: 'left',
+                                fontFamily:'roboto'
+                            }
+                        }}
                         editable={{
                             onRowAdd: (newData) =>
                                 new Promise((resolve) => {
