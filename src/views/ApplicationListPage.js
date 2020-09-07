@@ -28,6 +28,7 @@ import MenuBookIcon from "@material-ui/icons/MenuBook";
 import BarChartIcon from "@material-ui/icons/BarChart";
 import {makeStyles} from "@material-ui/core/styles";
 import ApplicationSelectionList from "../components/ApplicationSelectionList";
+import logo from "../logo/FSMVU-TR-5.png";
 
 const drawerWidth = 270;
 
@@ -162,7 +163,7 @@ export default function ApplicationListPage(){
     return(
         <div className={classes.root}>
             <CssBaseline />
-            <AppBar position="absolute" style={{backgroundColor: "#457b9d"}} className={clsx(classes.appBar, open && classes.appBarShift)}>
+            <AppBar position="absolute" style={{backgroundColor: "#a5876a"}} className={clsx(classes.appBar, open && classes.appBarShift)}>
                 <Toolbar className={classes.toolbar}>
                     <IconButton
                         edge="start"
@@ -173,6 +174,7 @@ export default function ApplicationListPage(){
                     >
                         <MenuIcon />
                     </IconButton>
+                    <img src={logo} style={{width:'6vh'}} alt="Logo"/>
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
                         FSMVÜ İntibak, Akademisyen ve Ders Yönetim Sistemi
                     </Typography>

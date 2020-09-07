@@ -42,6 +42,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogActions from "@material-ui/core/DialogActions";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import logo from "../logo/FSMVU-TR-5.png";
 
 export default function AcademicianEditPage(){
 
@@ -215,7 +216,7 @@ export default function AcademicianEditPage(){
     return (
         <div className={classes.root}>
             <CssBaseline />
-            <AppBar position="absolute" style={{backgroundColor: "#457b9d"}} className={clsx(classes.appBar, open && classes.appBarShift)}>
+            <AppBar position="absolute" style={{backgroundColor: "#a5876a"}} className={clsx(classes.appBar, open && classes.appBarShift)}>
                 <Toolbar className={classes.toolbar}>
                     <IconButton
                         edge="start"
@@ -226,6 +227,7 @@ export default function AcademicianEditPage(){
                     >
                         <MenuIcon />
                     </IconButton>
+                    <img src={logo} style={{width:'6vh'}} alt="Logo"/>
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
                         FSMVÜ İntibak, Akademisyen ve Ders Yönetim Sistemi
                     </Typography>

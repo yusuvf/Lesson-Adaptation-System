@@ -37,6 +37,10 @@ import BarChartIcon from "@material-ui/icons/BarChart";
 import Link from "@material-ui/core/Link";
 import Copyright from '../components/Copyright'
 
+import logo from '../logo/FSMVU-TR-5.png'
+import TextField from "@material-ui/core/TextField";
+import Autocomplete from "@material-ui/lab/Autocomplete";
+
 
 const drawerWidth = 270;
 
@@ -158,16 +162,16 @@ function LessonEditPage() {
         </div>
     );
 
-    const obj = {
-        columns: [
-            { title: 'Ders Adı', field: 'dersadi' },
-            { title: 'Ders Kodu', field: 'derskodu' },
-            { title: 'Kredi', field: 'kredi' },
-            { title: 'Teori', field: 'teori' },
-            { title: 'Lab', field: 'lab' },
+    const years = [
+        { dateYear: '2000'},
+        { dateYear: '2001'},
+        { dateYear: '2002'},
+    ];
 
-        ],
-    }
+    const semesters = [
+        {semester : 'Güz'},
+        {semester : 'Bahar'}
+    ];
 
     const [state, setState] = React.useState({
         columns: [
@@ -176,7 +180,6 @@ function LessonEditPage() {
             { title: 'Kredi', field: 'kredi' },
             { title: 'Teori', field: 'teori' },
             { title: 'Lab', field: 'lab' },
-
         ],
         data: [
             { dersadi: 'Calculus I', derskodu: 'MAT227', kredi:"5", teori: '4', lab: '2'},
@@ -204,6 +207,9 @@ function LessonEditPage() {
 
         ],
     }*/
+
+    const [year, setYear] = React.useState("");
+    const [semester, setSemester] = React.useState("");
 
     /*Bu kısım açılır buton olan kaydet içindir*/
     const [open, setOpen] = React.useState(true);
@@ -257,7 +263,7 @@ function LessonEditPage() {
     return (
         <div className={classes.root}>
             <CssBaseline />
-            <AppBar position="absolute" style={{backgroundColor: "#457b9d"}} className={clsx(classes.appBar, open && classes.appBarShift)}>
+            <AppBar position="absolute" style={{backgroundColor: "#a5876a"}} className={clsx(classes.appBar, open && classes.appBarShift)}>
                 <Toolbar className={classes.toolbar}>
                     <IconButton
                         edge="start"
@@ -268,6 +274,7 @@ function LessonEditPage() {
                     >
                         <MenuIcon />
                     </IconButton>
+                    <img src={logo} style={{width:'6vh'}} alt="Logo"/>
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
                         FSMVÜ İntibak, Akademisyen ve Ders Yönetim Sistemi
                     </Typography>
@@ -297,17 +304,31 @@ function LessonEditPage() {
                 <div className={classes.appBarSpacer} />
                 <Container maxWidth="lg" className={classes.container}>
                     <Grid container spacing={3}>
+                        <Grid item xs={12} md={6}>
+                            <Autocomplete
+                                id="lesson-year"
+                                options={years}
+                                style={{backgroundColor:'#FFFFFF'}}
+                                getOptionLabel={(option) => option.dateYear}
+                                fullWidth
+                                renderInput={(params) => <TextField {...params} label="Ders Yılı" variant="outlined" />}
+                                onChange={(e,val) => setYear(val.dateYear)}
+                            />
+                        </Grid>
+                        <Grid item xs={12} md={6}>
+                            <Autocomplete
+                                id="lesson-semester"
+                                options={semesters}
+                                style={{backgroundColor:'#FFFFFF'}}
+                                getOptionLabel={(option) => option.semester}
+                                fullWidth
+                                renderInput={(params) => <TextField {...params} label="Dönem Bilgisi" variant="outlined" />}
+                                onChange={(e,val) => setSemester(val.semester)}
+                            />
+                        </Grid>
                         <Grid item xs={12}>
                             <div className="App">
                                 <MaterialTable
-                                    options={{
-                                        headerStyle: {
-
-                                        },
-                                        rowStyle: {
-
-                                        }
-                                    }}
                                     title="Ders Listesi"
                                     columns={state.columns}
                                     data={state.data}

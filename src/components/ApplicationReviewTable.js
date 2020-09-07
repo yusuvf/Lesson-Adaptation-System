@@ -50,7 +50,6 @@ export default function ApplicationReviewTable() {
                 dersIsmi: 'Veri Yapıları',
                 dersKredi: 5,
                 dersAkts: 6,
-
             },
             {
                 dersKodu: 'BLM103',
@@ -78,8 +77,10 @@ export default function ApplicationReviewTable() {
                 }
             }
         }
-    });
 
+    },[]);
+
+    //setUniversityInfo("Sakarya Üniversitesi");
     //console.log(state.data);
 
     return (
@@ -93,7 +94,7 @@ export default function ApplicationReviewTable() {
 
                     },
                     headerStyle: {
-                        backgroundColor: '#b07d62',
+                        backgroundColor: '#40739e',
                         color:'white'
                     }
                 },
@@ -101,7 +102,7 @@ export default function ApplicationReviewTable() {
                     title: state.columns[1].title,
                     field: 'intibakDersinAdi',
                     headerStyle: {
-                        backgroundColor: '#b07d62',
+                        backgroundColor: '#40739e',
                         color:'white'
                     }
                 },
@@ -110,7 +111,7 @@ export default function ApplicationReviewTable() {
                     field: 'intibakKredi',
                     type: 'numeric',
                     headerStyle: {
-                        backgroundColor: '#b07d62',
+                        backgroundColor: '#40739e',
                         color:'white'
                     }
                 },
@@ -119,7 +120,7 @@ export default function ApplicationReviewTable() {
                     field: 'intibakAkts',
                     type:'numeric',
                     headerStyle: {
-                        backgroundColor: '#b07d62',
+                        backgroundColor: '#40739e',
                         color:'white'
                     }
                 },
@@ -127,7 +128,7 @@ export default function ApplicationReviewTable() {
                     title: state.columns[4].title,
                     field: 'intibakBasariNotu',
                     headerStyle: {
-                        backgroundColor: '#b07d62',
+                        backgroundColor: '#40739e',
                         color:'white'
                     }
                 },
@@ -135,7 +136,7 @@ export default function ApplicationReviewTable() {
                     title: state.columns[5].title,
                     field: 'fsmvuDersKodu',
                     headerStyle: {
-                        backgroundColor: '#85182a',
+                        backgroundColor: '#6D214F',
                         color:'white'
                     }
                 },
@@ -143,7 +144,7 @@ export default function ApplicationReviewTable() {
                     title: state.columns[6].title,
                     field: 'fsmvuDersinAdi',
                     headerStyle: {
-                        backgroundColor: '#85182a',
+                        backgroundColor: '#6D214F',
                         color:'white'
                     }
                 },
@@ -152,7 +153,7 @@ export default function ApplicationReviewTable() {
                     field: 'fsmvuKredi',
                     type:'numeric',
                     headerStyle: {
-                        backgroundColor: '#85182a',
+                        backgroundColor: '#6D214F',
                         color:'white'
                     }
                 },
@@ -161,7 +162,7 @@ export default function ApplicationReviewTable() {
                     field: 'fsmvuAkts',
                     type:'numeric',
                     headerStyle: {
-                        backgroundColor: '#85182a',
+                        backgroundColor: '#6D214F',
                         color:'white'
                     }
                 },
@@ -169,7 +170,7 @@ export default function ApplicationReviewTable() {
                     title: state.columns[9].title,
                     field: 'fsmvuBasariNotu',
                     headerStyle: {
-                        backgroundColor: '#85182a',
+                        backgroundColor: '#6D214F',
                         color:'white'
                     }
                 }

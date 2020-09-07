@@ -35,6 +35,8 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogActions from "@material-ui/core/DialogActions";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import TextField from '@material-ui/core/TextField';
+import logo from "../logo/FSMVU-TR-5.png";
 
 const drawerWidth = 270;
 
@@ -180,11 +182,21 @@ export default function ApplicationReviewPage(){
         setOpen(false);
     };
 
+    const [applicantInfo, setApplicantInfo] = React.useState( {
+        applicantName: 'Ahmet',
+        applicantSurname: 'Dönmez',
+        applicantUniversityEnterInfo: '1997',
+        applicantToTransfer: 'Bilgisayar Mühendisliği',
+        applicantFromTransfer: 'Elektrik Elektronik Mühendisliği',
+        applicantUniversity: 'Koç Üniversitesi'
+        }
+    )
+
     console.log(history.location.state.applicationId)
     return(
         <div className={classes.root}>
             <CssBaseline />
-            <AppBar position="absolute" style={{backgroundColor: "#457b9d"}} className={clsx(classes.appBar, open && classes.appBarShift)}>
+            <AppBar position="absolute" style={{backgroundColor: "#a5876a"}} className={clsx(classes.appBar, open && classes.appBarShift)}>
                 <Toolbar className={classes.toolbar}>
                     <IconButton
                         edge="start"
@@ -195,6 +207,7 @@ export default function ApplicationReviewPage(){
                     >
                         <MenuIcon />
                     </IconButton>
+                    <img src={logo} style={{width:'6vh'}} alt="Logo"/>
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
                         FSMVÜ İntibak, Akademisyen ve Ders Yönetim Sistemi
                     </Typography>
@@ -223,6 +236,51 @@ export default function ApplicationReviewPage(){
                 <div className={classes.appBarSpacer} />
                 <Container maxWidth="xl" className={classes.container}>
                     <Grid container spacing={0}>
+                        <Grid xs={6} md={4} style={{marginBottom:'5vh'}}>
+                            <TextField
+                                style={{backgroundColor:'white', width:'80%'}}
+                                disabled
+                                id="outlined-disabled"
+                                label="Öğrencinin Adı Soyadı" defaultValue={applicantInfo.applicantName + " " + applicantInfo.applicantSurname}
+                                variant="outlined"
+                            />
+                        </Grid>
+                        <Grid xs={6} md={4} style={{marginBottom:'5vh'}}>
+                            <TextField
+                                style={{backgroundColor:'white', width:'80%'}}
+                                disabled
+                                id="outlined-disabled"
+                                label="Kayıtlı Olduğu Üniversite" defaultValue={applicantInfo.applicantUniversity}
+                                variant="outlined"
+                            />
+                        </Grid>
+                        <Grid xs={6} md={4} style={{marginBottom:'5vh'}}>
+                            <TextField
+                                style={{backgroundColor:'white', width:'80%'}}
+                                disabled
+                                id="outlined-disabled"
+                                label="Kayıtlı Olduğu Bölüm" defaultValue={applicantInfo.applicantFromTransfer}
+                                variant="outlined"
+                            />
+                        </Grid>
+                        <Grid xs={6} md={4} style={{marginBottom:'5vh'}}>
+                            <TextField
+                                style={{backgroundColor:'white', width:'80%'}}
+                                disabled
+                                id="outlined-disabled"
+                                label="Geçerli Öğretim Yılı" defaultValue={applicantInfo.applicantUniversityEnterInfo}
+                                variant="outlined"
+                            />
+                        </Grid>
+                        <Grid xs={6} md={4} style={{marginBottom:'5vh'}}>
+                            <TextField
+                                style={{backgroundColor:'white', width:'80%'}}
+                                disabled
+                                id="outlined-disabled"
+                                label="Başvurduğu Bölüm" defaultValue={applicantInfo.applicantToTransfer}
+                                variant="outlined"
+                            />
+                        </Grid>
                         <Grid item xs={12} lg={12} sm={12} md={12}>
                             <Paper>
                                 <ApplicationReviewTable />

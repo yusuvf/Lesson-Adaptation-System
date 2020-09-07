@@ -29,6 +29,7 @@ export default function Application() {
   const [Year, setYear] = React.useState("");
   const [Department, setDepartment] = React.useState("");
   const [ApplicationType, setApplicationType] = React.useState("");
+  const [ApplicationDepartment, setApplicationDepartment] = React.useState("");
 
  const person = {
       name: FirstName,
@@ -39,7 +40,7 @@ export default function Application() {
       year:Year,
       department:Department,
       applicationType:ApplicationType,
-
+      applicationDepartment:ApplicationDepartment,
      dersler:[
 
      ]
@@ -62,6 +63,13 @@ export default function Application() {
     { title: 'Dikey Geçiş'},
     { title: 'Diğer'},
   ];
+
+  const basvurulanBolumler = [
+        { name: 'Bilgisayar Mühendisliği'},
+        { name: 'Biyomedikal Mühendisliği'},
+        { name: 'Elektrik Elektronik Mühendisliği'},
+        { name: 'İnşaat Mühendisliği'},
+    ];
 
     const [state, setState] = React.useState({
         columns: [
@@ -172,9 +180,7 @@ export default function Application() {
                 onChange={e => setYear(e.target.value)}
                 />
             </Grid>
-             <Grid item xs={12} sm={4} >
-             </Grid>
-            <Grid item xs={12} sm={4} style={{marginTop:'2vh'}} >
+            <Grid item xs={12} sm={6} style={{marginTop:'2vh'}} >
                 <Autocomplete
                     id="application-type-combo"
                     options={gelisNeden}
@@ -184,10 +190,19 @@ export default function Application() {
                     onChange={(e,val) => setApplicationType(val.title)}
                 />
             </Grid>
-             <Grid item xs={12} sm={4} >
+             <Grid item xs={12} sm={6} style={{marginTop:'2vh'}} >
+                 <Autocomplete
+                     id="application-department"
+                     options={basvurulanBolumler}
+                     getOptionLabel={(option) => option.name}
+                     fullWidth
+                     renderInput={(params) => <TextField {...params} label="Başvurulan Bölüm" variant="outlined" />}
+                     onChange={(e,val) => setApplicationDepartment(val.name)}
+                 />
              </Grid>
+
             <Grid style={{marginTop:'8vh', fontWeight:'500', fontFamily:'Roboto'}} item xs={12}>
-              <p>Lütfen aşağıdaki tabloya kendi üniversitenizde almış olduğunuz dersleri giriniz. Sağ üstteki + butonuna basarak ders ekleyebilirsiniz. Buna ek olarak Transkriptinizi de eklemeyi lütfen unutmayın.</p>
+              <p>Lütfen aşağıdaki tabloya kendi üniversitenizde almış olduğunuz dersleri giriniz. Tablonun sağ üstündeki + butonuna basarak ders ekleyebilirsiniz. Buna ek olarak Transkriptinizi de eklemeyi lütfen unutmayın.</p>
             </Grid>
              <Grid item xs={12}>
                  <Grid container spacing={3}>
