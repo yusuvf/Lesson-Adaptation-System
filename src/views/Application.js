@@ -187,7 +187,7 @@ export default function Application() {
                     getOptionLabel={(option) => option.title}
                     fullWidth
                     renderInput={(params) => <TextField {...params} label="Başvuru Türü" variant="outlined" />}
-                    onChange={(e,val) => setApplicationType(val.title)}
+                    onChange={(e,val) => {(val) ? setApplicationType(val.title) : console.log("Silindi") } }
                 />
             </Grid>
              <Grid item xs={12} sm={6} style={{marginTop:'2vh'}} >
@@ -197,7 +197,7 @@ export default function Application() {
                      getOptionLabel={(option) => option.name}
                      fullWidth
                      renderInput={(params) => <TextField {...params} label="Başvurulan Bölüm" variant="outlined" />}
-                     onChange={(e,val) => setApplicationDepartment(val.name)}
+                     onChange={(e,val) => {(val) ? setApplicationDepartment(val.name) : console.log("Silindi") }}
                  />
              </Grid>
 

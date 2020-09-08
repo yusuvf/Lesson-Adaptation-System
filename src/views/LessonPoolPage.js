@@ -358,30 +358,30 @@ export default function LessonPoolPage() {
                         <Grid item xs={12} style={{height:'8vh',textAlign:'left' , fontSize:'22px', fontWeight:'900'}}>
                            Ders Havuzu Düzenleme
                         </Grid>
-                            <Grid item xs={6}>
+                            <Grid item xs={12} md={5} style={{display:'grid', alignItems:'center'}}>
                                 <Autocomplete
                                     id="teacher"
                                     options={teachers}
                                     getOptionLabel={(option) => option.title}
-                                    style={{ width: "18vw", backgroundColor:'white'}}
-                                    onChange={(event, value) => giveValueFromTeacher(value)}
+                                    style={{ width: "85%", backgroundColor:'white'}}
+                                    onChange={(event, value) => {(value) ? giveValueFromTeacher(value) : console.log("silindi..") }}
                                     renderInput={(params) => <TextField {...params} label="Öğretim Görevlisi Seçiniz" variant="outlined" />}
                                 /><br/>
                             </Grid>
-                            <Grid item xs={1}>
-                                <div>
-
-                                </div>
-                            </Grid>
-                            <Grid item xs={5}>
+                            <Grid item xs={12} md={5} style={{display:'grid', alignItems:'center'}}>
                                 <Autocomplete
                                     id="term"
                                     options={term}
                                     getOptionLabel={(option) => option.term}
-                                    style={{ width: "18vw",  backgroundColor:'white', visibility: value.title == undefined ? 'hidden':'visible'}}
-                                    onChange={(event, v) => funcForTerm(v.term)}
+                                    style={{ width: "85%",  backgroundColor:'white', visibility: value.title === undefined ? 'hidden':'visible'}}
+                                    onChange={(event, v) => { (v === null) ? console.log("silindi...") : funcForTerm(v.term)  }}
                                     renderInput={(params) => <TextField {...params} label="Dönem Seçiniz" variant="outlined" />}
                                 /><br/><br/>
+                            </Grid>
+                             <Grid item xs={12} md={2} style={{display:'grid', alignItems:'center'}}>
+                                <Button variant="contained" color="primary" size="medium" onClick>
+                                    Dersleri Getir
+                                </Button>
                             </Grid>
                             <Grid item xs={12} style={{ marginTop:"5vh", marginBottom:'2vh'}}>
                                 <TextField  style={{float:'left', width: "18vw",  backgroundColor:'white'}}

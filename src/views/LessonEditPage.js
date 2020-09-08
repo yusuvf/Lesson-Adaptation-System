@@ -312,7 +312,7 @@ function LessonEditPage() {
                                 getOptionLabel={(option) => option.dateYear}
                                 fullWidth
                                 renderInput={(params) => <TextField {...params} label="Ders Yılı" variant="outlined" />}
-                                onChange={(e,val) => setYear(val.dateYear)}
+                                onChange={(e,val) => {(val) ? setYear(val.dateYear) :console.log("Silindi") }}
                             />
                         </Grid>
                         <Grid item xs={12} md={5}>
@@ -323,7 +323,7 @@ function LessonEditPage() {
                                 getOptionLabel={(option) => option.semester}
                                 fullWidth
                                 renderInput={(params) => <TextField {...params} label="Dönem Bilgisi" variant="outlined" />}
-                                onChange={(e,val) => setSemester(val.semester)}
+                                onChange={(e,val) => {(val) ? setSemester(val.semester) : console.log("Silindi") }}
                             />
                         </Grid>
                         <Grid item xs={12} md={2} style={{display:'grid', alignItems:'center'}}>
