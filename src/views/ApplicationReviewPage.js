@@ -188,7 +188,8 @@ export default function ApplicationReviewPage(){
         applicantUniversityEnterInfo: '1997',
         applicantToTransfer: 'Bilgisayar Mühendisliği',
         applicantFromTransfer: 'Elektrik Elektronik Mühendisliği',
-        applicantUniversity: 'Koç Üniversitesi'
+        applicantUniversity: 'Koç Üniversitesi',
+        transferType: 'Yatay Geçiş'
         }
     )
 
@@ -236,7 +237,7 @@ export default function ApplicationReviewPage(){
                 <div className={classes.appBarSpacer} />
                 <Container maxWidth="xl" className={classes.container}>
                     <Grid container spacing={0}>
-                        <Grid xs={6} md={4} style={{marginBottom:'5vh'}}>
+                        <Grid xs={6} md={4} style={{marginBottom:'3vh'}}>
                             <TextField
                                 style={{backgroundColor:'white', width:'80%'}}
                                 disabled
@@ -245,7 +246,7 @@ export default function ApplicationReviewPage(){
                                 variant="outlined"
                             />
                         </Grid>
-                        <Grid xs={6} md={4} style={{marginBottom:'5vh'}}>
+                        <Grid xs={6} md={4} style={{marginBottom:'3vh'}}>
                             <TextField
                                 style={{backgroundColor:'white', width:'80%'}}
                                 disabled
@@ -254,7 +255,7 @@ export default function ApplicationReviewPage(){
                                 variant="outlined"
                             />
                         </Grid>
-                        <Grid xs={6} md={4} style={{marginBottom:'5vh'}}>
+                        <Grid xs={6} md={4} style={{marginBottom:'3vh'}}>
                             <TextField
                                 style={{backgroundColor:'white', width:'80%'}}
                                 disabled
@@ -278,6 +279,15 @@ export default function ApplicationReviewPage(){
                                 disabled
                                 id="outlined-disabled"
                                 label="Başvurduğu Bölüm" defaultValue={applicantInfo.applicantToTransfer}
+                                variant="outlined"
+                            />
+                        </Grid>
+                        <Grid xs={6} md={4} style={{marginBottom:'5vh'}}>
+                            <TextField
+                                style={{backgroundColor:'white', width:'80%'}}
+                                disabled
+                                id="outlined-disabled"
+                                label="Geçiş Türü" defaultValue={applicantInfo.transferType}
                                 variant="outlined"
                             />
                         </Grid>

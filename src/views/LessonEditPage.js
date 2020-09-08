@@ -304,7 +304,7 @@ function LessonEditPage() {
                 <div className={classes.appBarSpacer} />
                 <Container maxWidth="lg" className={classes.container}>
                     <Grid container spacing={3}>
-                        <Grid item xs={12} md={6}>
+                        <Grid item xs={12} md={5}>
                             <Autocomplete
                                 id="lesson-year"
                                 options={years}
@@ -315,7 +315,7 @@ function LessonEditPage() {
                                 onChange={(e,val) => setYear(val.dateYear)}
                             />
                         </Grid>
-                        <Grid item xs={12} md={6}>
+                        <Grid item xs={12} md={5}>
                             <Autocomplete
                                 id="lesson-semester"
                                 options={semesters}
@@ -326,10 +326,20 @@ function LessonEditPage() {
                                 onChange={(e,val) => setSemester(val.semester)}
                             />
                         </Grid>
+                        <Grid item xs={12} md={2} style={{display:'grid', alignItems:'center'}}>
+                            <Button variant="contained" color="primary" size="medium" onClick>
+                                Dersleri Getir
+                            </Button>
+                        </Grid>
                         <Grid item xs={12}>
                             <div className="App">
                                 <MaterialTable
                                     title="Ders Listesi"
+                                    options={{
+                                        actionsCellStyle: {
+                                            width:'10%'
+                                        }
+                                    }}
                                     columns={state.columns}
                                     data={state.data}
                                     editable={{

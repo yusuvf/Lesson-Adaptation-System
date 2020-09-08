@@ -261,6 +261,11 @@ export default function AcademicianEditPage(){
                             <div className="App">
                                 <MaterialTable
                                     title="Akademisyen Listesi"
+                                    options={{
+                                        actionsCellStyle: {
+                                            width:'10%'
+                                        }
+                                    }}
                                     columns={state.columns}
                                     data={state.data}
                                     editable={{

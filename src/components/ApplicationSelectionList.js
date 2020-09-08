@@ -12,13 +12,14 @@ import Button from '@material-ui/core/Button';
 import {useHistory} from "react-router";
 
 const columns = [
-    { id: 'ad', label: 'Ad', minWidth: 170, align: 'center'},
+    { id: 'basvuruNo', label: 'Başvuru Numarası', minWidth: 80, align: 'center'},
+    { id: 'ad', label: 'Ad', minWidth: 150, align: 'center'},
     { id: 'soyad', label: 'Soyad', minWidth: 100, align: 'center' },
-    { id: 'universite', label: 'Üniversite', minWidth: 170, align: 'center'},
-    { id: 'girisYili', label: 'Giriş Yılı', minWidth: 170, align: 'center'},
-    { id: 'girisTuru', label: 'Giriş Türü', minWidth: 170, align: 'center'},
-    { id: 'tarih', label: 'Tarih', minWidth: 170, align: 'center'},
-    { id: 'detay', label: 'Detay', minWidth: 170, align: 'center'},
+    { id: 'universite', label: 'Üniversite', minWidth: 180, align: 'center'},
+    { id: 'girisYili', label: 'Giriş Yılı', minWidth: 150, align: 'center'},
+    { id: 'girisTuru', label: 'Giriş Türü', minWidth: 150, align: 'center'},
+    { id: 'tarih', label: 'Tarih', minWidth: 150, align: 'center'},
+    { id: 'detay', label: 'Detay', minWidth: 150, align: 'center'},
 ];
 
 const useStyles = makeStyles({
@@ -37,18 +38,18 @@ export default function ApplicationSelectionList() {
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
     const [rows,setRows] = React.useState([
-        {ad:'Adem', soyad:'Deneme', universite:'Fatih Sultan Mehmet Vakıf Üniversitesi', girisYili:1999, girisTuru:'Dikey Geçiş', tarih:'01.01.2000', detay:0},
-        {ad:'Adem', soyad:'Deneme', universite:'Fatih Sultan Mehmet Vakıf Üniversitesi', girisYili:1999, girisTuru:'Dikey Geçiş', tarih:'01.01.2000', detay:1},
-        {ad:'Adem', soyad:'Deneme', universite:'Fatih Sultan Mehmet Vakıf Üniversitesi', girisYili:1999, girisTuru:'Dikey Geçiş', tarih:'01.01.2000', detay:2},
-        {ad:'Adem', soyad:'Deneme', universite:'Fatih Sultan Mehmet Vakıf Üniversitesi', girisYili:1999, girisTuru:'Dikey Geçiş', tarih:'01.01.2000', detay:3},
-        {ad:'Adem', soyad:'Deneme', universite:'Fatih Sultan Mehmet Vakıf Üniversitesi', girisYili:1999, girisTuru:'Dikey Geçiş', tarih:'01.01.2000', detay:4},
-        {ad:'Adem', soyad:'Deneme', universite:'Fatih Sultan Mehmet Vakıf Üniversitesi', girisYili:1999, girisTuru:'Dikey Geçiş', tarih:'01.01.2000', detay:5},
-        {ad:'Adem', soyad:'Deneme', universite:'Fatih Sultan Mehmet Vakıf Üniversitesi', girisYili:1999, girisTuru:'Dikey Geçiş', tarih:'01.01.2000', detay:6},
-        {ad:'Adem', soyad:'Deneme', universite:'Fatih Sultan Mehmet Vakıf Üniversitesi', girisYili:1999, girisTuru:'Dikey Geçiş', tarih:'01.01.2000', detay:7},
-        {ad:'Adem', soyad:'Deneme', universite:'Fatih Sultan Mehmet Vakıf Üniversitesi', girisYili:1999, girisTuru:'Dikey Geçiş', tarih:'01.01.2000', detay:8},
-        {ad:'Adem', soyad:'Deneme', universite:'Fatih Sultan Mehmet Vakıf Üniversitesi', girisYili:1999, girisTuru:'Dikey Geçiş', tarih:'01.01.2000', detay:9},
-        {ad:'Adem', soyad:'Deneme', universite:'Fatih Sultan Mehmet Vakıf Üniversitesi', girisYili:1999, girisTuru:'Dikey Geçiş', tarih:'01.01.2000', detay:10},
-        {ad:'Adem', soyad:'Deneme', universite:'Fatih Sultan Mehmet Vakıf Üniversitesi', girisYili:1999, girisTuru:'Dikey Geçiş', tarih:'01.01.2000', detay:11},
+        {basvuruNo:1, ad:'Adem', soyad:'Deneme', universite:'Fatih Sultan Mehmet Vakıf Üniversitesi', girisYili:1999, girisTuru:'Dikey Geçiş', tarih:'01.01.2000', detay:0},
+        {basvuruNo:2, ad:'Adem', soyad:'Deneme', universite:'Fatih Sultan Mehmet Vakıf Üniversitesi', girisYili:1999, girisTuru:'Dikey Geçiş', tarih:'01.01.2000', detay:0},
+        {basvuruNo:3, ad:'Adem', soyad:'Deneme', universite:'Fatih Sultan Mehmet Vakıf Üniversitesi', girisYili:1999, girisTuru:'Dikey Geçiş', tarih:'01.01.2000', detay:0},
+        {basvuruNo:4, ad:'Adem', soyad:'Deneme', universite:'Fatih Sultan Mehmet Vakıf Üniversitesi', girisYili:1999, girisTuru:'Dikey Geçiş', tarih:'01.01.2000', detay:0},
+        {basvuruNo:5, ad:'Adem', soyad:'Deneme', universite:'Fatih Sultan Mehmet Vakıf Üniversitesi', girisYili:1999, girisTuru:'Dikey Geçiş', tarih:'01.01.2000', detay:0},
+        {basvuruNo:6, ad:'Adem', soyad:'Deneme', universite:'Fatih Sultan Mehmet Vakıf Üniversitesi', girisYili:1999, girisTuru:'Dikey Geçiş', tarih:'01.01.2000', detay:0},
+        {basvuruNo:7, ad:'Adem', soyad:'Deneme', universite:'Fatih Sultan Mehmet Vakıf Üniversitesi', girisYili:1999, girisTuru:'Dikey Geçiş', tarih:'01.01.2000', detay:0},
+        {basvuruNo:8, ad:'Adem', soyad:'Deneme', universite:'Fatih Sultan Mehmet Vakıf Üniversitesi', girisYili:1999, girisTuru:'Dikey Geçiş', tarih:'01.01.2000', detay:0},
+        {basvuruNo:9, ad:'Adem', soyad:'Deneme', universite:'Fatih Sultan Mehmet Vakıf Üniversitesi', girisYili:1999, girisTuru:'Dikey Geçiş', tarih:'01.01.2000', detay:0},
+        {basvuruNo:10, ad:'Adem', soyad:'Deneme', universite:'Fatih Sultan Mehmet Vakıf Üniversitesi', girisYili:1999, girisTuru:'Dikey Geçiş', tarih:'01.01.2000', detay:0},
+        {basvuruNo:11, ad:'Adem', soyad:'Deneme', universite:'Fatih Sultan Mehmet Vakıf Üniversitesi', girisYili:1999, girisTuru:'Dikey Geçiş', tarih:'01.01.2000', detay:0},
+        {basvuruNo:12, ad:'Adem', soyad:'Deneme', universite:'Fatih Sultan Mehmet Vakıf Üniversitesi', girisYili:1999, girisTuru:'Dikey Geçiş', tarih:'01.01.2000', detay:0},
     ]);
 
     const handleChangePage = (event, newPage) => {
