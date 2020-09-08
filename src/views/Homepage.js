@@ -6,8 +6,6 @@ import Button from "@material-ui/core/Button";
 import LocalLibraryIcon from '@material-ui/icons/LocalLibrary';
 import PersonPinIcon from '@material-ui/icons/PersonPin';
 
-import Background from '../logo/cool-background.svg';
-
 import {
     Link as RouterLink
 } from "react-router-dom";
@@ -15,7 +13,7 @@ import logo from '../logo/FSMVU-TR-1.png';
 
 function Homepage() {
     return (
-        <Container style={{backgroundImage: `url(${Background})`}} maxWidth="md" style={{marginTop:"5%"}}><br/><br/>
+        <Container maxWidth="md" style={{marginTop:"5%"}}><br/><br/>
             <Grid container spacing={2}>
                 <Grid item xs={12} md={6} lg={6}>
                     <img src={logo} style={{width:'240px'}} alt="Logo"/>

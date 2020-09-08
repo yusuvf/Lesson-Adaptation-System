@@ -11,6 +11,7 @@ import {
     Route,
     Link as RouterLink
 } from "react-router-dom";
+import ApplicationConfirmedPage from "./views/ApplicationConfirmedPage";
 
 
 function App() {
@@ -29,6 +30,9 @@ function App() {
                 </Route>
                 <Route path="/dashboard">
                     <Dashboard/>
+                </Route>
+                <Route path="/applicationconfirmed">
+                    <ApplicationConfirmedPage/>
                 </Route>
             </Switch>
         </Router>
