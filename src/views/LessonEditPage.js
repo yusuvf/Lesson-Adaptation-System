@@ -163,14 +163,16 @@ function LessonEditPage() {
     );
 
     const years = [
-        { dateYear: '2000'},
-        { dateYear: '2001'},
-        { dateYear: '2002'},
+        { dateYear: '2010-2011'},
+        { dateYear: '2011-2012'},
+        { dateYear: '2012-2013'},
+        { dateYear: '2013-2014'},
     ];
 
     const semesters = [
         {semester : 'Güz'},
-        {semester : 'Bahar'}
+        {semester : 'Bahar'},
+        {semester : 'Yaz'}
     ];
 
     const [state, setState] = React.useState({

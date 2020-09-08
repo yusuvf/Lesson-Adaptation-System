@@ -284,7 +284,7 @@ export default function Application() {
                          <DialogTitle id="responsive-dialog-title">{"Değişiklikler Kaydedilsin mi?"}</DialogTitle>
                          <DialogContent>
                              <DialogContentText>
-                                 Bilgileri doğru girdiğinizden emin misiniz? Daha sonra verdiniğiz bilgiler üzerinde değişim yapamayacaksınız!
+                                 Bilgileri doğru girdiğinizden emin misiniz? Daha sonra verdiniğiz bilgiler üzerinde değişim yapmanız <b>mümkün olmayacaktır</b>.
                              </DialogContentText>
                          </DialogContent>
                          <DialogActions>

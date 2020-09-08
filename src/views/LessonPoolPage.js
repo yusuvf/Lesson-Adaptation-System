@@ -18,7 +18,7 @@ import Divider from "@material-ui/core/Divider";
 import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
 import Copyright from "../components/Copyright";
-import {Link as RouterLink, Route} from "react-router-dom";
+import {Link as RouterLink} from "react-router-dom";
 import {makeStyles} from "@material-ui/core/styles";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import DashboardIcon from "@material-ui/icons/Dashboard";
@@ -26,23 +26,8 @@ import ListItemText from "@material-ui/core/ListItemText";
 import PeopleIcon from "@material-ui/icons/People";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
 import BarChartIcon from "@material-ui/icons/BarChart";
-import {PartyMode} from "@material-ui/icons";
 import logo from "../logo/FSMVU-TR-5.png";
 
-/*
-const yeniDizi=[
-
-]
-
-for (let i=0 ;i<dbDizi.length; i++){
-    yeniDizi.push(
-        {
-            name: dbDizi[i].dersAd
-        }
-    )
-}
-
- */
 
 const drawerWidth = 270;
 
@@ -256,7 +241,7 @@ export default function LessonPoolPage() {
 
     let [donem,setDonem] = useState("");
     function lastPhase() {
-        if((value.title != null) && donem != ""){
+        if((value.title != null) && donem !== ""){
             value.subjects = rightside;
             value.term = donem;
             console.log(value)
@@ -291,7 +276,7 @@ export default function LessonPoolPage() {
         //This algorithm works to seperate classes as right and left.
         for (let a =0; a<=hocaDersi.length-1; a++){
             for (let b =0; b<=items.length-1; b++){
-                if(hocaDersi[a].name == items[b].name){
+                if(hocaDersi[a].name === items[b].name){
                     items[b].box = 1;
                     items[b].selected = true;
                 }
@@ -307,7 +292,7 @@ export default function LessonPoolPage() {
     const [searchable, setSearchable] = useState("");
 
     function searchArea(e) {
-        var s = e.target.value;
+        let s = e.target.value;
         setSearchable(s);
     }
     return(
