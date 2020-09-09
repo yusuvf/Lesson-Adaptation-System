@@ -254,12 +254,12 @@ export default function LessonPoolPage() {
 
     }
 
-    const [hocaDersi,setHocaDersi] = [
+    const [hocaDersi,setHocaDersi] = useState([
         { name: 'Bilgisayar Programlama I',},
         { name: 'Veri Bilimi'},
         { name: 'Veri Yapıları1'},
         { name: 'Bilgisayar Programlama I1'},
-    ];
+    ])
 
     function giveValueFromTeacher(value) {
         setValue(value);
