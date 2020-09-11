@@ -56,6 +56,18 @@ export default function Application() {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const submitControl = () => {
+      setOpen(false);
+
+      if( (FirstName !== "") && (LastName !== "") && (Mail !== "") && (University !== "") && (Faculty !== "") && (Year !== "") && (Department !== "") && (ApplicationType !== "") && (ApplicationDepartment !== "") ) {
+          //TODO
+          alert("Bütün alanlar dolu")
+      }else {
+          alert("Lütfen boş alan bırakmayın.")
+      }
+  }
+
   /*Bu kısım açılır buton içindir*/
 
   const gelisNeden = [
@@ -187,7 +199,7 @@ export default function Application() {
                     getOptionLabel={(option) => option.title}
                     fullWidth
                     renderInput={(params) => <TextField {...params} label="Başvuru Türü" variant="outlined" />}
-                    onChange={(e,val) => {(val) ? setApplicationType(val.title) : console.log("Silindi") } }
+                    onChange={(e,val) => {(val) ? setApplicationType(val.title) : setApplicationType("") } }
                 />
             </Grid>
              <Grid item xs={12} sm={6} style={{marginTop:'2vh'}} >
@@ -197,7 +209,7 @@ export default function Application() {
                      getOptionLabel={(option) => option.name}
                      fullWidth
                      renderInput={(params) => <TextField {...params} label="Başvurulan Bölüm" variant="outlined" />}
-                     onChange={(e,val) => {(val) ? setApplicationDepartment(val.name) : console.log("Silindi") }}
+                     onChange={(e,val) => {(val) ? setApplicationDepartment(val.name) : setApplicationDepartment("") }}
                  />
              </Grid>
 
@@ -291,7 +303,7 @@ export default function Application() {
                              <Button autoFocus variant="outlined" onClick={handleClose} color="primary">
                                  İptal
                              </Button>
-                             <Button variant="outlined" onClick={handleClose} color="primary" autoFocus>
+                             <Button variant="outlined" onClick={submitControl} color="primary" autoFocus>
                                  Gönder
                              </Button>
                          </DialogActions>
