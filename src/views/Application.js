@@ -16,6 +16,7 @@ import Copyright from '../components/Copyright';
 
 import ApplicationLessonTable from '../components/ApplicationLessonTable'
 import MaterialTable from "material-table";
+import {useHistory} from "react-router";
 
 export default function Application() {
   /*Bu kısım açılır buton içindir*/
@@ -46,6 +47,7 @@ export default function Application() {
      ]
   }
 
+  const history = useHistory();
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -61,7 +63,7 @@ export default function Application() {
 
       if( (FirstName !== "") && (LastName !== "") && (Mail !== "") && (University !== "") && (Faculty !== "") && (Year !== "") && (Department !== "") && (ApplicationType !== "") && (ApplicationDepartment !== "") ) {
           //TODO
-          alert("Bütün alanlar dolu")
+          history.push("/applicationconfirmed");
       }else {
           alert("Lütfen boş alan bırakmayın.")
       }
