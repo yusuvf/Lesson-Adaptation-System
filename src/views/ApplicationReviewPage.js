@@ -17,7 +17,7 @@ import Paper from "@material-ui/core/Paper";
 import ApplicationReviewTable from "../components/ApplicationReviewTable";
 import Box from "@material-ui/core/Box";
 import Copyright from "../components/Copyright";
-import React from "react";
+import React, {useEffect} from "react";
 import {useHistory,
         Link as RouterLink} from "react-router-dom";
 import ListItem from "@material-ui/core/ListItem";
@@ -37,6 +37,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import TextField from '@material-ui/core/TextField';
 import logo from "../logo/FSMVU-TR-5.png";
+import MaterialTable from "material-table";
 
 const drawerWidth = 270;
 
@@ -193,6 +194,84 @@ export default function ApplicationReviewPage(){
         }
     )
 
+    const [universityInfo, setUniversityInfo] = React.useState("Koç Üniversitesi");
+
+    const [state, setState] = React.useState({
+        columns: [
+            { title: universityInfo + ' Dersin Kodu', field: 'intibakDersKodu' },
+            { title: universityInfo + ' Dersin Adı', field: 'intibakDersinAdi' },
+            { title: universityInfo + ' Kredi', field: 'intibakKredi', type: 'numeric' },
+            { title: universityInfo + ' AKTS', field: 'intibakAkts', type:'numeric'},
+            { title: universityInfo + ' Başarı Notu', field: 'intibakBasariNotu'},
+            { title: 'FSMVU Dersin Kodu', field: 'fsmvuDersKodu' },
+            { title: 'FSMVU Dersin Adı', field: 'fsmvuDersinAdi' },
+            { title: 'FSMVU Kredi', field: 'fsmvuKredi', type: 'numeric' },
+            { title: 'FSMVU AKTS', field: 'fsmvuAkts', type:'numeric'},
+            { title: 'FSMVU Başarı Notu', field: 'fsmvuBasariNotu'},
+        ],
+        data: [
+            {
+                intibakDersKodu: 'CS101',
+                intibakDersinAdi: 'Computer Programming',
+                intibakKredi: 3,
+                intibakAkts: 6,
+                intibakBasariNotu: 'B+',
+                fsmvuDersKodu: 'BLM101',
+                fsmvuDersinAdi: 'Bilgisayar Programlama',
+                fsmvuKredi: 3,
+                fsmvuAkts: 5,
+            },
+            {
+                intibakDersKodu: 'CS102',
+                intibakDersinAdi: 'Veri Yapıları',
+                intibakKredi: 3,
+                intibakAkts: 6,
+                intibakBasariNotu: 'C+',
+                fsmvuDersKodu: 'BLM101',
+                fsmvuDersinAdi: 'Bilgisayar Programlama',
+                fsmvuKredi: 3,
+                fsmvuAkts: 5,
+            }
+        ],
+    });
+
+    const [dbLessons, setDbLessons] = React.useState({
+        lessons: [
+            {
+                dersKodu: 'blm102',
+                dersIsmi: 'Veri Yapıları',
+                dersKredi: 5,
+                dersAkts: 6,
+            },
+            {
+                dersKodu: 'BLM103',
+                dersIsmi: 'Veri Yapıları2',
+                dersKredi: 5,
+                dersAkts: 6,
+            },
+            {
+                dersKodu: 'blm104',
+                dersIsmi: 'Veri Yapıları3',
+                dersKredi: 5,
+                dersAkts: 6,
+            }
+        ]
+    });
+
+
+    useEffect(() => {
+        for (let i = 0; i<state.data.length; i++){
+            for (let k = 0; k<dbLessons.lessons.length; k++ ){
+                if(state.data[i].fsmvuDersKodu === dbLessons.lessons[k].dersKodu){
+                    state.data[i].fsmvuDersinAdi = dbLessons.lessons[k].dersIsmi;
+                    state.data[i].fsmvuAkts = dbLessons.lessons[k].dersAkts;
+                    state.data[i].fsmvuKredi = dbLessons.lessons[k].dersKredi;
+                }
+            }
+        }
+
+    });
+
     console.log(history.location.state.applicationId)
     return(
         <div className={classes.root}>
@@ -293,7 +372,147 @@ export default function ApplicationReviewPage(){
                         </Grid>
                         <Grid item xs={12} lg={12} sm={12} md={12}>
                             <Paper>
-                                <ApplicationReviewTable />
+                                <MaterialTable
+                                    title="İntibak Tablosu"
+                                    columns={[
+                                        {
+                                            title: state.columns[0].title,
+                                            field: 'intibakDersKodu',
+                                            cellStyle: {
+
+                                            },
+                                            headerStyle: {
+                                                backgroundColor: '#40739e',
+                                                color:'white'
+                                            }
+                                        },
+                                        {
+                                            title: state.columns[1].title,
+                                            field: 'intibakDersinAdi',
+                                            headerStyle: {
+                                                backgroundColor: '#40739e',
+                                                color:'white'
+                                            }
+                                        },
+                                        {
+                                            title: state.columns[2].title,
+                                            field: 'intibakKredi',
+                                            type: 'numeric',
+                                            headerStyle: {
+                                                backgroundColor: '#40739e',
+                                                color:'white'
+                                            }
+                                        },
+                                        {
+                                            title: state.columns[3].title,
+                                            field: 'intibakAkts',
+                                            type:'numeric',
+                                            headerStyle: {
+                                                backgroundColor: '#40739e',
+                                                color:'white'
+                                            }
+                                        },
+                                        {
+                                            title: state.columns[4].title,
+                                            field: 'intibakBasariNotu',
+                                            headerStyle: {
+                                                backgroundColor: '#40739e',
+                                                color:'white'
+                                            }
+                                        },
+                                        {
+                                            title: state.columns[5].title,
+                                            field: 'fsmvuDersKodu',
+                                            headerStyle: {
+                                                backgroundColor: '#6D214F',
+                                                color:'white'
+                                            }
+                                        },
+                                        {
+                                            title: state.columns[6].title,
+                                            field: 'fsmvuDersinAdi',
+                                            headerStyle: {
+                                                backgroundColor: '#6D214F',
+                                                color:'white'
+                                            }
+                                        },
+                                        {
+                                            title: state.columns[7].title,
+                                            field: 'fsmvuKredi',
+                                            type:'numeric',
+                                            headerStyle: {
+                                                backgroundColor: '#6D214F',
+                                                color:'white'
+                                            }
+                                        },
+                                        {
+                                            title: state.columns[8].title,
+                                            field: 'fsmvuAkts',
+                                            type:'numeric',
+                                            headerStyle: {
+                                                backgroundColor: '#6D214F',
+                                                color:'white'
+                                            }
+                                        },
+                                        {
+                                            title: state.columns[9].title,
+                                            field: 'fsmvuBasariNotu',
+                                            headerStyle: {
+                                                backgroundColor: '#6D214F',
+                                                color:'white'
+                                            }
+                                        }
+                                    ]}
+                                    data={state.data}
+                                    editable={{
+                                        onRowAdd: (newData) =>
+                                            new Promise((resolve) => {
+                                                setTimeout(() => {
+                                                    resolve();
+                                                    setState((prevState) => {
+                                                        const data = [...prevState.data];
+                                                        data.push(newData);
+                                                        return { ...prevState, data };
+                                                    });
+                                                }, 600);
+                                            }),
+                                        onRowUpdate: (newData, oldData) =>
+                                            new Promise((resolve) => {
+                                                setTimeout(() => {
+                                                    resolve();
+                                                    if (oldData) {
+                                                        setState((prevState) => {
+                                                            const data = [...prevState.data];
+                                                            data[data.indexOf(oldData)] = newData;
+                                                            return { ...prevState, data };
+                                                        });
+                                                    }
+                                                }, 600);
+                                            }),
+                                        onRowDelete: (oldData) =>
+                                            new Promise((resolve) => {
+                                                setTimeout(() => {
+                                                    resolve();
+                                                    setState((prevState) => {
+                                                        const data = [...prevState.data];
+                                                        data.splice(data.indexOf(oldData), 1);
+                                                        return { ...prevState, data };
+                                                    });
+                                                }, 600);
+                                            }),
+                                    }}
+                                    options={{
+                                        rowStyle: {
+
+                                        },
+                                        cellStyle:{
+
+                                        },
+                                        headerStyle:{
+
+                                        }
+                                    }}
+                                />
                             </Paper>
                         </Grid>
                         <Grid style={{marginTop:'4vh'}} xs={12} lg={12} sm={12} md={12}>
