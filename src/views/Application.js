@@ -58,7 +58,6 @@ export default function Application() {
   };
 
   const submitControl = () => {
-      setOpen(false);
 
       if( (FirstName !== "") && (LastName !== "") && (Mail !== "") && (University !== "") && (Faculty !== "") && (Year !== "") && (Department !== "") && (ApplicationType !== "") && (ApplicationDepartment !== "") ) {
           //TODO
@@ -66,6 +65,8 @@ export default function Application() {
       }else {
           alert("Lütfen boş alan bırakmayın.")
       }
+
+      setOpen(false);
   }
 
   /*Bu kısım açılır buton içindir*/
