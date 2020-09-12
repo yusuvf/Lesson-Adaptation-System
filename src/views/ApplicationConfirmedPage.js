@@ -22,7 +22,7 @@ function ApplicationConfirmedPage() {
                     </Typography>
                 </Grid>
                 <Grid item xs={12} md={12} style={{marginTop:'3vh'}}>
-                    <RouterLink to="/">
+                    <RouterLink style={{textDecoration:'none'}} to="/">
                         <Button variant="contained" color="primary" size="large">
                             Ana Sayfa
                         </Button>

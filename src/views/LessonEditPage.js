@@ -127,7 +127,7 @@ const useStyles = makeStyles((theme) => ({
 function LessonEditPage() {
     const mainListItems = (
         <div>
-            <RouterLink to="/dashboard">
+            <RouterLink style={{textDecoration:'none'}} to="/dashboard">
                 <ListItem button >
                     <ListItemIcon>
                         <DashboardIcon />
@@ -135,7 +135,7 @@ function LessonEditPage() {
                     <ListItemText primary="İntibak Başvuruları" />
                 </ListItem>
             </RouterLink>
-            <RouterLink to="/dashboard/akademisyenduzenle">
+            <RouterLink style={{textDecoration:'none'}} to="/dashboard/akademisyenduzenle">
                 <ListItem button >
                     <ListItemIcon>
                         <PeopleIcon />
@@ -143,7 +143,7 @@ function LessonEditPage() {
                     <ListItemText primary="Akademisyen Düzenleme" />
                 </ListItem>
             </RouterLink>
-            <RouterLink to="/dashboard/dersduzenle">
+            <RouterLink style={{textDecoration:'none'}} to="/dashboard/dersduzenle">
                 <ListItem button>
                     <ListItemIcon>
                         <MenuBookIcon />
@@ -151,7 +151,7 @@ function LessonEditPage() {
                     <ListItemText primary="Ders Düzenleme" />
                 </ListItem>
             </RouterLink>
-            <RouterLink to="/dashboard/dershavuzu">
+            <RouterLink style={{textDecoration:'none'}} to="/dashboard/dershavuzu">
                 <ListItem button>
                     <ListItemIcon>
                         <BarChartIcon />

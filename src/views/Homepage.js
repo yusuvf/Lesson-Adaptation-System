@@ -30,7 +30,7 @@ function Homepage() {
                 </Grid>
                 <Grid item xs={12} md={5}>
                     <LocalLibraryIcon style={{fontSize:"500%"}}/><br/><br/>
-                    <RouterLink to="/application">
+                    <RouterLink style={{textDecoration:'none'}} to="/application">
                         <Button variant="contained" color="primary" size="large">
                             Öğrenci İntibak Başvurusu
                         </Button>
@@ -38,7 +38,7 @@ function Homepage() {
                 </Grid>
                 <Grid item xs={12} md={5}>
                     <PersonPinIcon style={{fontSize:"500%"}}/><br/><br/>
-                    <RouterLink to="/signin">
+                    <RouterLink style={{textDecoration:'none'}} to="/signin">
                         <Button variant="contained" color="primary" size="large">
                             Akademisyen Giriş
                         </Button>
