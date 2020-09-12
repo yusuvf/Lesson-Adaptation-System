@@ -235,6 +235,9 @@ export default function ApplicationReviewPage(){
         ],
     });
 
+    //Rapor al butonu disabled kontrolü
+    const [flag, setFlag] = React.useState(true)
+
     const [dbLessons, setDbLessons] = React.useState({
         lessons: [
             {
@@ -515,7 +518,14 @@ export default function ApplicationReviewPage(){
                                 />
                             </Paper>
                         </Grid>
-                        <Grid style={{marginTop:'4vh'}} xs={12} lg={12} sm={12} md={12}>
+                        <Grid style={{marginTop:'4vh'}} xs={12} lg={6} sm={6} md={6}>
+                            <div style={{float:'left'}}>
+                                <Button variant="contained" disabled={flag} color="primary" size="medium">
+                                    Rapor Al
+                                </Button>
+                            </div>
+                        </Grid>
+                        <Grid style={{marginTop:'4vh'}} xs={12} lg={6} sm={6} md={6}>
                             <div style={{float:'right'}}>
                                 <Button variant="contained" color="primary" size="medium" onClick={dialogOpen}>
                                     İntİbakı Tamamla
