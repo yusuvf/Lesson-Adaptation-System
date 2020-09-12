@@ -27,6 +27,7 @@ import PeopleIcon from "@material-ui/icons/People";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
 import BarChartIcon from "@material-ui/icons/BarChart";
 import logo from "../logo/FSMVU-TR-5.png";
+import {func} from "prop-types";
 
 
 const drawerWidth = 270;
@@ -141,15 +142,6 @@ export default function LessonPoolPage() {
         { name: 'Veri Bilimi2'},
     ]);
 
-    React.useEffect(() => {
-        console.log(subjects)
-        setSubjects([
-            { name: 'Veri Yapıları'},
-        ])
-        console.log(subjects)
-    },[]);
-
-
     //This loop converts data which comes from database to our format.
     for (let x = 0; x<subjects.length; x++){
         ListeElemanlari[x] = {name:subjects[x].name,box:0, selected:false};
@@ -237,37 +229,31 @@ export default function LessonPoolPage() {
         setItems(newItems);
     }
 
-    const [value,setValue] = useState("")
+    const [value,setValue] = useState("");
 
-    let [donem,setDonem] = useState("");
     function lastPhase() {
-        if((value.title != null) && donem !== ""){
-            value.subjects = rightside;
-            value.term = donem;
-            console.log(value)
-            alert("Kayıt işlemi başarılı")
-            return value;
-        }
-        else{
-            alert("Lütfen Öğretim Görevlisi ve Dönem Alanlarını Boş Bırakmayınız.")
-        }
 
+        //Veritabanına kayıt işlemi bu fonksiyonda yapılacak.
+
+        /*
+        value.title = selectedTeacher;
+        value.term = selectedTerm;
+        value.subjects  = rightside;
+        */
     }
 
-    const [hocaDersi,setHocaDersi] = useState([
-        { name: 'Bilgisayar Programlama I',},
-        { name: 'Veri Bilimi'},
-        { name: 'Veri Yapıları1'},
-        { name: 'Bilgisayar Programlama I1'},
-    ])
+    const [selectedTeacher, setSelectedTeacher] = useState("");
+    const [selectedTerm, setSelectedTerm] = useState("");
+    const [controlState, setControlState] = useState(0);
+    const [hocaDersi, setHocaDersi] = useState([]);
 
-    function giveValueFromTeacher(value) {
-        setValue(value);
-        //Bu hocadangelen2 değeri veritabanından gelen hocaya göre değişen derslerdir. hoca adına value.title ile erişebilirsiniz.
+    React.useEffect(() => {
+        //Burada selectedTeacher ve selectedTerm'e göre veritabanından gelen veriler setHocaDersi ile hocaDersi'ne atılacak.
+        setHocaDersi([{ name: 'Veri Yapıları'},
+                            { name: 'Veri Yapıları2'},
+        ]);
 
-        //setHocaDersi(Databaseden gelecek veri burada çalışmalı)
 
-        //Before doing seperate firstly do all boxes 0 to adjust all lists.
         for (let b =0; b<=items.length-1; b++){
             items[b].box = 0;
             items[b].selected = false;
@@ -282,11 +268,18 @@ export default function LessonPoolPage() {
                 }
             }
         }
-    }
+    }, [controlState]);
 
-    function funcForTerm(deger) {
-        value.term = deger;
-        setDonem(deger);
+    function dersleriGetir() {
+        if(selectedTeacher === ""){
+            alert("Lütfen Hoca Bilgisini Seçiniz.")
+
+        }else if(selectedTerm === ""){
+            alert("Lütfen Dönem Bilgisini Seçiniz.")
+        }else{
+            setControlState(controlState+1);
+        }
+
     }
 
     const [searchable, setSearchable] = useState("");
@@ -349,7 +342,7 @@ export default function LessonPoolPage() {
                                     options={teachers}
                                     getOptionLabel={(option) => option.title}
                                     style={{ width: "85%", backgroundColor:'white'}}
-                                    onChange={(event, value) => {(value) ? giveValueFromTeacher(value) : console.log("silindi..") }}
+                                    onChange={(event, value) => {(value) ? setSelectedTeacher(value.title) : setSelectedTeacher("")}}
                                     renderInput={(params) => <TextField {...params} label="Öğretim Görevlisi Seçiniz" variant="outlined" />}
                                 /><br/>
                             </Grid>
@@ -358,13 +351,13 @@ export default function LessonPoolPage() {
                                     id="term"
                                     options={term}
                                     getOptionLabel={(option) => option.term}
-                                    style={{ width: "85%",  backgroundColor:'white', visibility: value.title === undefined ? 'hidden':'visible'}}
-                                    onChange={(event, v) => { (v === null) ? console.log("silindi...") : funcForTerm(v.term)  }}
+                                    style={{ width: "85%",  backgroundColor:'white'}}
+                                    onChange={(event, v) => { (v) ? setSelectedTerm(v.term) : setSelectedTerm("") }}
                                     renderInput={(params) => <TextField {...params} label="Dönem Seçiniz" variant="outlined" />}
                                 /><br/><br/>
                             </Grid>
                              <Grid item xs={12} md={2} style={{display:'grid', alignItems:'center'}}>
-                                <Button variant="contained" color="primary" size="medium" onClick>
+                                <Button variant="contained" color="primary" size="medium" onClick={dersleriGetir}>
                                     Dersleri Getir
                                 </Button>
                             </Grid>
@@ -386,7 +379,7 @@ export default function LessonPoolPage() {
                                 {generateMarkUp(rightside)}
                             </Grid>
                             <Grid item xs={12}>
-                                <Button  style={{marginLeft:"0%", width:'8%'}} variant="contained" color="primary" onClick={lastPhase}>Kaydet</Button>
+                                <Button style={{marginLeft:"0%", width:'8%'}} variant="contained" color="primary" onClick={lastPhase}>Kaydet</Button>
                             </Grid>
                         </Grid>
                 </Paper>

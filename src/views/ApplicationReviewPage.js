@@ -247,7 +247,7 @@ export default function ApplicationReviewPage(){
                 dersAkts: 6,
             },
             {
-                dersKodu: 'BLM103',
+                dersKodu: 'blm103',
                 dersIsmi: 'Veri Yapıları2',
                 dersKredi: 5,
                 dersAkts: 6,
