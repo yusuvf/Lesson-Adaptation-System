@@ -306,18 +306,7 @@ function LessonEditPage() {
                 <div className={classes.appBarSpacer} />
                 <Container maxWidth="lg" className={classes.container}>
                     <Grid container spacing={3}>
-                        <Grid item xs={12} md={5}>
-                            <Autocomplete
-                                id="lesson-year"
-                                options={years}
-                                style={{backgroundColor:'#FFFFFF'}}
-                                getOptionLabel={(option) => option.dateYear}
-                                fullWidth
-                                renderInput={(params) => <TextField {...params} label="Ders Yılı" variant="outlined" />}
-                                onChange={(e,val) => {(val) ? setYear(val.dateYear) :console.log("Silindi") }}
-                            />
-                        </Grid>
-                        <Grid item xs={12} md={5}>
+                        <Grid item xs={12} md={4}>
                             <Autocomplete
                                 id="lesson-semester"
                                 options={semesters}
@@ -332,6 +321,9 @@ function LessonEditPage() {
                             <Button variant="contained" color="primary" size="medium" onClick>
                                 Dersleri Getir
                             </Button>
+                        </Grid>
+                        <Grid item xs={12} md={6} style={{display:'grid', alignItems:'center'}}>
+
                         </Grid>
                         <Grid item xs={12}>
                             <div className="App">

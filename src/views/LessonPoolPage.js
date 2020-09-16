@@ -246,6 +246,7 @@ export default function LessonPoolPage() {
     const [selectedTerm, setSelectedTerm] = useState("");
     const [controlState, setControlState] = useState(0);
     const [hocaDersi, setHocaDersi] = useState([]);
+    //const [raporFlag, setRaporFlag] = React.useState(true)
 
     React.useEffect(() => {
         //Burada selectedTeacher ve selectedTerm'e göre veritabanından gelen veriler setHocaDersi ile hocaDersi'ne atılacak.
@@ -336,7 +337,7 @@ export default function LessonPoolPage() {
                         <Grid item xs={12} style={{height:'8vh',textAlign:'left' , fontSize:'22px', fontWeight:'900'}}>
                            Ders Havuzu Düzenleme
                         </Grid>
-                            <Grid item xs={12} md={5} style={{display:'grid', alignItems:'center'}}>
+                            <Grid item xs={12} md={5} style={{display:'grid', alignItems:'center',  height:'56px', marginTop:'10px'}}>
                                 <Autocomplete
                                     id="teacher"
                                     options={teachers}
@@ -346,7 +347,7 @@ export default function LessonPoolPage() {
                                     renderInput={(params) => <TextField {...params} label="Öğretim Görevlisi Seçiniz" variant="outlined" />}
                                 /><br/>
                             </Grid>
-                            <Grid item xs={12} md={5} style={{display:'grid', alignItems:'center'}}>
+                            <Grid item xs={12} md={5} style={{display:'grid', alignItems:'center', height:'56px', marginTop:'10px'}}>
                                 <Autocomplete
                                     id="term"
                                     options={term}
@@ -356,7 +357,7 @@ export default function LessonPoolPage() {
                                     renderInput={(params) => <TextField {...params} label="Dönem Seçiniz" variant="outlined" />}
                                 /><br/><br/>
                             </Grid>
-                             <Grid item xs={12} md={2} style={{display:'grid', alignItems:'center'}}>
+                             <Grid item xs={12} md={2} style={{display:'grid', alignItems:'center', height:'50px', marginTop:'10px'}}>
                                 <Button variant="contained" color="primary" size="medium" onClick={dersleriGetir}>
                                     Dersleri Getir
                                 </Button>
@@ -380,6 +381,13 @@ export default function LessonPoolPage() {
                             </Grid>
                             <Grid item xs={12}>
                                 <Button style={{marginLeft:"0%", width:'8%'}} variant="contained" color="primary" onClick={lastPhase}>Kaydet</Button>
+                            </Grid>
+                             <Grid style={{marginTop:'4vh'}} xs={12} lg={12} sm={12} md={12}>
+                                <div style={{float:'right'}}>
+                                    <Button variant="contained" color="primary" size="medium">
+                                        Rapor Al
+                                    </Button>
+                                </div>
                             </Grid>
                         </Grid>
                 </Paper>
