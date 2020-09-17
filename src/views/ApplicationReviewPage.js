@@ -17,7 +17,7 @@ import Paper from "@material-ui/core/Paper";
 import ApplicationReviewTable from "../components/ApplicationReviewTable";
 import Box from "@material-ui/core/Box";
 import Copyright from "../components/Copyright";
-import React, {useEffect} from "react";
+import React, {useEffect, Component} from "react";
 import {useHistory,
         Link as RouterLink} from "react-router-dom";
 import ListItem from "@material-ui/core/ListItem";
@@ -38,6 +38,13 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import TextField from '@material-ui/core/TextField';
 import logo from "../logo/FSMVU-TR-5.png";
 import MaterialTable from "material-table";
+import {func} from "prop-types";
+import ReactExport from "react-export-excel";
+
+
+const ExcelFile = ReactExport.ExcelFile;
+const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
+
 
 const drawerWidth = 270;
 
@@ -123,7 +130,110 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+function ExportData(multiData){
+   // console.log(multiData)
+    return (
+        <div>
+            <ExcelFile element={<button>Download Data With Styles</button>}>
+                <ExcelSheet dataSet={multiData} name="Organization"/>
+            </ExcelFile>
+        </div>
+    );
+}
+
+function format(){
+
+}
+
 export default function ApplicationReviewPage(){
+
+    const [applicantInfo, setApplicantInfo] = React.useState( {
+            applicantName: 'Ahmet',
+            applicantSurname: 'Dönmez',
+            applicantUniversityEnterInfo: '1997',
+            applicantToTransfer: 'Bilgisayar Mühendisliği',
+            applicantFromTransfer: 'Elektrik Elektronik Mühendisliği',
+            applicantUniversity: 'Koç Üniversitesi',
+            transferType: 'Yatay Geçiş'
+        }
+    )
+
+    const [state, setState] = React.useState({
+        columns: [
+            { title: applicantInfo.applicantUniversity + ' Dersin Kodu', field: 'intibakDersKodu' },
+            { title: applicantInfo.applicantUniversity + ' Dersin Adı', field: 'intibakDersinAdi' },
+            { title: applicantInfo.applicantUniversity + ' Kredi', field: 'intibakKredi', type: 'numeric' },
+            { title: applicantInfo.applicantUniversity + ' AKTS', field: 'intibakAkts', type:'numeric'},
+            { title: applicantInfo.applicantUniversity + ' Başarı Notu', field: 'intibakBasariNotu'},
+            { title: 'FSMVU Dersin Kodu', field: 'fsmvuDersKodu' },
+            { title: 'FSMVU Üniversite Seçmeli', field: 'fsmvuUniversiteSecmeli' },
+            { title: 'FSMVU Dersin Adı', field: 'fsmvuDersinAdi' },
+            { title: 'FSMVU Kredi', field: 'fsmvuKredi', type: 'numeric' },
+            { title: 'FSMVU AKTS', field: 'fsmvuAkts', type:'numeric'},
+            { title: 'FSMVU Başarı Notu', field: 'fsmvuBasariNotu'},
+        ],
+        data: [
+            {
+                intibakDersKodu: 'CS101',
+                intibakDersinAdi: 'Computer Programming',
+                intibakKredi: 3,
+                intibakAkts: 6,
+                intibakBasariNotu: 'B+',
+                fsmvuDersKodu: 'BLM101',
+                fsmvuUniversiteSecmeli: "AZ",
+                fsmvuDersinAdi: 'Bilgisayar Programlama',
+                fsmvuKredi: 3,
+                fsmvuAkts: 5,
+                fsmvuBasariNotu: "",
+            },
+            {
+                intibakDersKodu: 'CS102',
+                intibakDersinAdi: 'Veri Yapıları',
+                intibakKredi: 3,
+                intibakAkts: 6,
+                intibakBasariNotu: 'C+',
+                fsmvuDersKodu: 'BLM101',
+                fsmvuUniversiteSecmeli: "AZ",
+                fsmvuDersinAdi: 'Bilgisayar Programlama',
+                fsmvuKredi: 3,
+                fsmvuAkts: 5,
+                fsmvuBasariNotu:"",
+            }
+        ],
+    });
+
+    const [multiDataSet, setMultiDataSet] = React.useState(
+        [
+            {
+                columns: [state.columns[0].title, state.columns[1].title, state.columns[2].title, state.columns[3].title, state.columns[4].title, state.columns[5].title, state.columns[6].title, state.columns[7].title, state.columns[8].title, state.columns[9].title, state.columns[10].title],
+                data: [
+
+                ]
+            }
+        ]
+    )
+
+    for(let i = 0; i<state.data.length; i++){
+        let array = []
+
+        array.push(state.data[i].intibakDersKodu);
+        array.push(state.data[i].intibakDersinAdi);
+        array.push(state.data[i].intibakKredi);
+        array.push(state.data[i].intibakAkts);
+        array.push(state.data[i].intibakBasariNotu);
+        array.push(state.data[i].fsmvuDersKodu);
+        array.push(state.data[i].fsmvuUniversiteSecmeli);
+        array.push(state.data[i].fsmvuDersinAdi);
+        array.push(state.data[i].fsmvuKredi);
+        array.push(state.data[i].fsmvuAkts);
+        array.push(state.data[i].fsmvuBasariNotu);
+
+        multiDataSet[0].data.push(array)
+        array = [];
+    }
+
+    console.log(multiDataSet)
+
     const mainListItems = (
         <div>
             <RouterLink style={{textDecoration:'none'}} to="/dashboard">
@@ -183,60 +293,8 @@ export default function ApplicationReviewPage(){
         setOpen(false);
     };
 
-    const [applicantInfo, setApplicantInfo] = React.useState( {
-        applicantName: 'Ahmet',
-        applicantSurname: 'Dönmez',
-        applicantUniversityEnterInfo: '1997',
-        applicantToTransfer: 'Bilgisayar Mühendisliği',
-        applicantFromTransfer: 'Elektrik Elektronik Mühendisliği',
-        applicantUniversity: 'Koç Üniversitesi',
-        transferType: 'Yatay Geçiş'
-        }
-    )
-
-    const [universityInfo, setUniversityInfo] = React.useState("Koç Üniversitesi");
-
-    const [state, setState] = React.useState({
-        columns: [
-            { title: universityInfo + ' Dersin Kodu', field: 'intibakDersKodu' },
-            { title: universityInfo + ' Dersin Adı', field: 'intibakDersinAdi' },
-            { title: universityInfo + ' Kredi', field: 'intibakKredi', type: 'numeric' },
-            { title: universityInfo + ' AKTS', field: 'intibakAkts', type:'numeric'},
-            { title: universityInfo + ' Başarı Notu', field: 'intibakBasariNotu'},
-            { title: 'FSMVU Dersin Kodu', field: 'fsmvuDersKodu' },
-            { title: 'FSMVU Dersin Adı', field: 'fsmvuDersinAdi' },
-            { title: 'FSMVU Kredi', field: 'fsmvuKredi', type: 'numeric' },
-            { title: 'FSMVU AKTS', field: 'fsmvuAkts', type:'numeric'},
-            { title: 'FSMVU Başarı Notu', field: 'fsmvuBasariNotu'},
-        ],
-        data: [
-            {
-                intibakDersKodu: 'CS101',
-                intibakDersinAdi: 'Computer Programming',
-                intibakKredi: 3,
-                intibakAkts: 6,
-                intibakBasariNotu: 'B+',
-                fsmvuDersKodu: 'BLM101',
-                fsmvuDersinAdi: 'Bilgisayar Programlama',
-                fsmvuKredi: 3,
-                fsmvuAkts: 5,
-            },
-            {
-                intibakDersKodu: 'CS102',
-                intibakDersinAdi: 'Veri Yapıları',
-                intibakKredi: 3,
-                intibakAkts: 6,
-                intibakBasariNotu: 'C+',
-                fsmvuDersKodu: 'BLM101',
-                fsmvuDersinAdi: 'Bilgisayar Programlama',
-                fsmvuKredi: 3,
-                fsmvuAkts: 5,
-            }
-        ],
-    });
-
     //Rapor al butonu disabled kontrolü
-    const [flag, setFlag] = React.useState(true)
+    const [flag, setFlag] = React.useState(false)
 
     const [dbLessons, setDbLessons] = React.useState({
         lessons: [
@@ -275,7 +333,7 @@ export default function ApplicationReviewPage(){
 
     });
 
-    console.log(history.location.state.applicationId)
+   //console.log(history.location.state.applicationId)
     return(
         <div className={classes.root}>
             <CssBaseline />
@@ -509,9 +567,12 @@ export default function ApplicationReviewPage(){
                         </Grid>
                         <Grid style={{marginTop:'4vh'}} xs={12} lg={6} sm={6} md={6}>
                             <div style={{float:'left'}}>
-                                <Button variant="contained" disabled={flag} color="primary" size="medium">
-                                    Rapor Al
-                                </Button>
+                                <ExcelFile element={<Button variant="contained" disabled={flag} color="primary" size="medium">
+                                        Rapor Al
+                                        </Button>}>
+                                    <ExcelSheet dataSet={multiDataSet} name="Organization"/>
+                                </ExcelFile>
+
                             </div>
                         </Grid>
                         <Grid style={{marginTop:'4vh'}} xs={12} lg={6} sm={6} md={6}>
