@@ -166,7 +166,7 @@ export default function ApplicationReviewPage(){
             { title: applicantInfo.applicantUniversity + ' AKTS', field: 'intibakAkts', type:'numeric'},
             { title: applicantInfo.applicantUniversity + ' Başarı Notu', field: 'intibakBasariNotu'},
             { title: 'FSMVU Dersin Kodu', field: 'fsmvuDersKodu' },
-            { title: 'FSMVU Üniversite Seçmeli', field: 'fsmvuUniversiteSecmeli' },
+            { title: 'FSMVU Üniversite Seçmeli', field: 'fsmvuDersinGrubu' },
             { title: 'FSMVU Dersin Adı', field: 'fsmvuDersinAdi' },
             { title: 'FSMVU Kredi', field: 'fsmvuKredi', type: 'numeric' },
             { title: 'FSMVU AKTS', field: 'fsmvuAkts', type:'numeric'},
@@ -180,7 +180,7 @@ export default function ApplicationReviewPage(){
                 intibakAkts: 6,
                 intibakBasariNotu: 'B+',
                 fsmvuDersKodu: 'BLM101',
-                fsmvuUniversiteSecmeli: "AZ",
+                fsmvuDersinGrubu: "AZ",
                 fsmvuDersinAdi: 'Bilgisayar Programlama',
                 fsmvuKredi: 3,
                 fsmvuAkts: 5,
@@ -193,7 +193,7 @@ export default function ApplicationReviewPage(){
                 intibakAkts: 6,
                 intibakBasariNotu: 'C+',
                 fsmvuDersKodu: 'BLM101',
-                fsmvuUniversiteSecmeli: "AZ",
+                fsmvuDersinGrubu: "AZ",
                 fsmvuDersinAdi: 'Bilgisayar Programlama',
                 fsmvuKredi: 3,
                 fsmvuAkts: 5,
@@ -212,27 +212,6 @@ export default function ApplicationReviewPage(){
             }
         ]
     )
-
-    for(let i = 0; i<state.data.length; i++){
-        let array = []
-
-        array.push(state.data[i].intibakDersKodu);
-        array.push(state.data[i].intibakDersinAdi);
-        array.push(state.data[i].intibakKredi);
-        array.push(state.data[i].intibakAkts);
-        array.push(state.data[i].intibakBasariNotu);
-        array.push(state.data[i].fsmvuDersKodu);
-        array.push(state.data[i].fsmvuUniversiteSecmeli);
-        array.push(state.data[i].fsmvuDersinAdi);
-        array.push(state.data[i].fsmvuKredi);
-        array.push(state.data[i].fsmvuAkts);
-        array.push(state.data[i].fsmvuBasariNotu);
-
-        multiDataSet[0].data.push(array)
-        array = [];
-    }
-
-    console.log(multiDataSet)
 
     const mainListItems = (
         <div>
@@ -491,7 +470,7 @@ export default function ApplicationReviewPage(){
                                         },
                                         {
                                             title: state.columns[6].title,
-                                            field: 'fsmvuDersinAdi',
+                                            field: 'fsmvuDersinGrubu',
                                             headerStyle: {
                                                 backgroundColor: '#6D214F',
                                                 color:'white'
@@ -499,6 +478,14 @@ export default function ApplicationReviewPage(){
                                         },
                                         {
                                             title: state.columns[7].title,
+                                            field: 'fsmvuDersinAdi',
+                                            headerStyle: {
+                                                backgroundColor: '#6D214F',
+                                                color:'white'
+                                            }
+                                        },
+                                        {
+                                            title: state.columns[8].title,
                                             field: 'fsmvuKredi',
                                             type:'numeric',
                                             headerStyle: {
@@ -507,7 +494,7 @@ export default function ApplicationReviewPage(){
                                             }
                                         },
                                         {
-                                            title: state.columns[8].title,
+                                            title: state.columns[9].title,
                                             field: 'fsmvuAkts',
                                             type:'numeric',
                                             headerStyle: {
@@ -516,7 +503,7 @@ export default function ApplicationReviewPage(){
                                             }
                                         },
                                         {
-                                            title: state.columns[9].title,
+                                            title: state.columns[10].title,
                                             field: 'fsmvuBasariNotu',
                                             headerStyle: {
                                                 backgroundColor: '#6D214F',
@@ -567,7 +554,29 @@ export default function ApplicationReviewPage(){
                         </Grid>
                         <Grid style={{marginTop:'4vh'}} xs={12} lg={6} sm={6} md={6}>
                             <div style={{float:'left'}}>
-                                <ExcelFile element={<Button variant="contained" disabled={flag} color="primary" size="medium">
+                                <ExcelFile element={<Button variant="contained" disabled={flag} onClick={() => {
+
+                                    multiDataSet[0].data = [];
+
+                                    for(let i = 0; i<state.data.length; i++){
+                                        let array = []
+
+                                        array.push(state.data[i].intibakDersKodu);
+                                        array.push(state.data[i].intibakDersinAdi);
+                                        array.push(state.data[i].intibakKredi);
+                                        array.push(state.data[i].intibakAkts);
+                                        array.push(state.data[i].intibakBasariNotu);
+                                        array.push(state.data[i].fsmvuDersKodu);
+                                        array.push(state.data[i].fsmvuDersinGrubu);
+                                        array.push(state.data[i].fsmvuDersinAdi);
+                                        array.push(state.data[i].fsmvuKredi);
+                                        array.push(state.data[i].fsmvuAkts);
+                                        array.push(state.data[i].fsmvuBasariNotu);
+
+                                        multiDataSet[0].data.push(array)
+                                        array = [];
+                                    }
+                                } } color="primary" size="medium">
                                         Rapor Al
                                         </Button>}>
                                     <ExcelSheet dataSet={multiDataSet} name="Organization"/>
