@@ -1,4 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was developed for the adaptation of students transferred from one university to another. This part is just Frontend.
+
+React.js and Material UI library used.
 
 ## Available Scripts
 
