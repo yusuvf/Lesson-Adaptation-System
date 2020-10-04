@@ -28,6 +28,11 @@ import MenuBookIcon from "@material-ui/icons/MenuBook";
 import BarChartIcon from "@material-ui/icons/BarChart";
 import logo from "../logo/FSMVU-TR-5.png";
 import {func} from "prop-types";
+import ReactExport from "react-export-excel";
+
+
+const ExcelFile = ReactExport.ExcelFile;
+const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
 
 
 const drawerWidth = 270;
@@ -157,6 +162,55 @@ export default function LessonPoolPage() {
         setOpen(false);
     };
 
+    const [kayitSayisi, setKayitSayisi] = React.useState("Ali Nizam");
+
+    const [DataSet, setDataSet] = React.useState(
+        [
+            {
+                columns: ["Öğretim Üyesi","Statü","Dersin Kodu","Dersin Adı","Öğrenci Sayısı","Teori","Lab"],
+                data: [
+                    [
+                        {value: "Ali Nizam"},
+                        {value: ""},
+                        {value: "Tam Zamanlı"},
+                        {value: "BLM101"},
+                        {value: "Bilgisayar Programlama"},
+                        {value: "30"},
+                        {value: "3"},
+                        {value: "3"},
+                    ],
+                    [
+                        {value: ""},
+                        {value: "Tam Zamanlı"},
+                        {value: "BLM101"},
+                        {value: "Veri Yapıları"},
+                        {value: "30"},
+                        {value: "5"},
+                        {value: "3"},
+                    ],
+                    [
+                        {value: ""},
+                        {value: "Tam Zamanlı"},
+                        {value: "BLM101"},
+                        {value: "Veri Yapıları"},
+                        {value: "30"},
+                        {value: "6"},
+                        {value: "3"},
+                    ],
+                    [
+                        {value: ""},
+                        {value: "Tam Zamanlı"},
+                        {value: "BLM101"},
+                        {value: "Bilgisayar Programlama"},
+                        {value: "30"},
+                        {value: "3"},
+                        {value: "3"},
+                    ],
+                ]
+            }
+        ]
+    )
+
     const mainListItems = (
         <div>
             <RouterLink style={{textDecoration:'none'}} to="/dashboard">
@@ -283,6 +337,17 @@ export default function LessonPoolPage() {
 
     }
 
+    const [lessonsDataSet, setLessonsDataSet] = React.useState(
+        [
+            {
+                columns: [],
+                data: [
+
+                ]
+            }
+        ]
+    )
+
     const [searchable, setSearchable] = useState("");
 
     function searchArea(e) {
@@ -384,9 +449,14 @@ export default function LessonPoolPage() {
                             </Grid>
                              <Grid style={{marginTop:'4vh'}} xs={12} lg={12} sm={12} md={12}>
                                 <div style={{float:'right'}}>
-                                    <Button variant="contained" color="primary" size="medium">
-                                        Rapor Al
-                                    </Button>
+                                    <ExcelFile element={
+                                            <Button variant="contained" color="primary" size="medium">
+                                                Rapor Al
+                                            </Button>
+                                        }
+                                    >
+                                        <ExcelSheet dataSet={DataSet} name="Organization"/>
+                                    </ExcelFile>
                                 </div>
                             </Grid>
                         </Grid>

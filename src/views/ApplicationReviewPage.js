@@ -273,7 +273,7 @@ export default function ApplicationReviewPage(){
     };
 
     //Rapor al butonu disabled kontrolü
-    const [flag, setFlag] = React.useState(false)
+    const [flag, setFlag] = React.useState(true)
 
     const [dbLessons, setDbLessons] = React.useState({
         lessons: [
