@@ -2,23 +2,9 @@ This project was developed for the adaptation of students transferred from one u
 
 React.js and Material UI library used.
 
--------------------------------------------------------------------------------------------------------------------------------------
+## Demo: https://lesson-adaptation-system.vercel.app/
 
-![Alt text](/Screenshots/homepage.png?raw=true "Title") 
-
--------------------------------------------------------------------------------------------------------------------------------------
-
-![Alt text](/Screenshots/ApplicationListPage.png?raw=true "Title") 
-
--------------------------------------------------------------------------------------------------------------------------------------
-
-![Alt text](/Screenshots/ApplicationReviewPage.png?raw=true "Title") 
-
--------------------------------------------------------------------------------------------------------------------------------------
-
-![Alt text](/Screenshots/LessonPoolPage.png?raw=true "Title") 
-
--------------------------------------------------------------------------------------------------------------------------------------
+(Sistem sadece Demo amaçlı Deploy edilmiştir, sistem henüz çalışmamaktadır başvurular için Fatih Sultan Mehmet Vakıf Üniversitesi Öğrenci İşleri sayfasındaki yönergeleri uygulamanız gerekmektedir.)
 
 
 ## Development
