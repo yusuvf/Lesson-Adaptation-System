@@ -4,7 +4,8 @@ React.js and Material UI library used.
 
 ## Demo: https://lesson-adaptation-system.vercel.app/
 
-(Sistem sadece Demo amaçlı Deploy edilmiştir, sistem henüz çalışmamaktadır başvurular için Fatih Sultan Mehmet Vakıf Üniversitesi Öğrenci İşleri sayfasındaki yönergeleri uygulamanız gerekmektedir.)
+(Sistem sadece Demo amaçlı Deploy edilmiştir yani henüz çalışmamaktadır.
+Başvurular için Fatih Sultan Mehmet Vakıf Üniversitesi Öğrenci İşleri sayfasındaki yönergeleri uygulamanız gerekmektedir.)
 
 
 ## Development
