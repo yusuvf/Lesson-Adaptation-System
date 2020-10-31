@@ -20,11 +20,11 @@ function Homepage() {
                 </Grid>
                 <Grid item xs={12} md={6} lg={6} style={{display:'grid',textAlign:'center',alignItems:'center'}}>
                     <Typography style={{fontFamily:'Roboto',fontWeight:'800'}} variant="h4" gutterBottom>
-                        İntibak Başvuru Sistemi
+                        TEST AŞAMASINDADIR İntibak Başvuru Sistemi 
                     </Typography>
                 </Grid>
                 <Grid style={{marginTop:'8vh',marginBottom:'6vh',fontFamily:'Roboto',fontWeight:'500'}} item xs={12} md={12} lg={12}>
-                    <p>İntibak Başvurusu yapmak isteyen öğrenciler ve bu başvuruları onaylayıp düzenlemek isteyen akademsiyenler için geliştirilmiş otomasyon sistemine hoşgeldiniz.</p>
+                    <p>TEST AŞAMASINDADIR, İntibak Başvurusu yapmak isteyen öğrenciler ve bu başvuruları onaylayıp düzenlemek isteyen akademsiyenler için geliştirilmiş otomasyon sistemine hoşgeldiniz.</p>
                 </Grid>
                 <Grid item xs={12} md={1}>
                 </Grid>
@@ -32,7 +32,7 @@ function Homepage() {
                     <LocalLibraryIcon style={{fontSize:"500%"}}/><br/><br/>
                     <RouterLink style={{textDecoration:'none'}} to="/application">
                         <Button variant="contained" color="primary" size="large">
-                            Öğrenci İntibak Başvurusu
+                            TEST Öğrenci İntibak Başvurusu
                         </Button>
                     </RouterLink>
                 </Grid>
@@ -40,7 +40,7 @@ function Homepage() {
                     <PersonPinIcon style={{fontSize:"500%"}}/><br/><br/>
                     <RouterLink style={{textDecoration:'none'}} to="/signin">
                         <Button variant="contained" color="primary" size="large">
-                            Akademisyen Giriş
+                            TEST Akademisyen Giriş
                         </Button>
                     </RouterLink>
                 </Grid>
