@@ -24,7 +24,7 @@ function Homepage() {
                     </Typography>
                 </Grid>
                 <Grid style={{marginTop:'8vh',marginBottom:'6vh',fontFamily:'Roboto',fontWeight:'500'}} item xs={12} md={12} lg={12}>
-                    <p>TEST AŞAMASINDADIR, İntibak Başvurusu yapmak isteyen öğrenciler ve bu başvuruları onaylayıp düzenlemek isteyen akademsiyenler için geliştirilmiş otomasyon sistemine hoşgeldiniz.</p>
+                    <p>Sistem sadece Demo amaçlı Deploy edilmiştir yani henüz çalışmamaktadır. Başvurular için Fatih Sultan Mehmet Vakıf Üniversitesi Öğrenci İşleri sayfasındaki yönergeleri uygulamanız gerekmektedir</p>
                 </Grid>
                 <Grid item xs={12} md={1}>
                 </Grid>
