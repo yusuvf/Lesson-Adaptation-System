@@ -117,7 +117,7 @@ export default function Application() {
          <Grid style={{marginTop:'10vh'}} container spacing={3}>
             <Grid item xs={12} sm={12} style={{marginBottom:'4vh'}}>
               <Typography style={{fontWeight:'800'}} variant="h4" gutterBottom>
-                  Öğrenci İntibak Başvuru Ekranı
+                  TEST Öğrenci İntibak Başvuru Ekranı - Bu başvuru sayfası test amaçlıdır
               </Typography><br/>
           </Grid>
             <Grid item xs={12} sm={6}>
